@@ -8,9 +8,9 @@ namespace ThemeParkTycoonGame
 {
     public class Guest
     {
-        public string Name { get; set; }
-        public Wallet Wallet { get; set; }
-        public DateTime? TimeEntered { get; set; }
+        public string Name;
+        public Wallet Wallet;
+        public DateTime? TimeEntered;
         
         public Guest()
         {

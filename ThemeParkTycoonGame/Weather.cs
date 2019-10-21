@@ -12,8 +12,8 @@ namespace ThemeParkTycoonGame
         public static Weather[] WeatherTypes;
         private static Random numberGenerator;
 
-        public string Name { get; set; }
-        public Image Image { get; set; }
+        public string Name;
+        public Image Image;
 
         public Weather(string name, Image image)
         {

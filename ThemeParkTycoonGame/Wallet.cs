@@ -41,7 +41,7 @@ namespace ThemeParkTycoonGame
 
     public class BalanceChangedEventArgs : EventArgs
     {
-        public decimal OldBalance { get; set; }
-        public decimal Balance { get; set; }
+        public decimal OldBalance;
+        public decimal Balance;
     }
 }

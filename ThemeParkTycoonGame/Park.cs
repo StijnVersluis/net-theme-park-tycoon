@@ -16,10 +16,10 @@ namespace ThemeParkTycoonGame
 
         public delegate void WeatherChangedEvent(object sender, WeatherChangedEventArgs e);
         public event WeatherChangedEvent WeatherChanged;
-        
-        public List<Guest> Guests { get; set; }
-        public Wallet ParkManagerWallet { get; set; }
-        public decimal EntryFee { get; set; }
+
+        public List<Guest> Guests;
+        public Wallet ParkManagerWallet;
+        public decimal EntryFee;
 
         private string name;
         public string Name
@@ -131,19 +131,19 @@ namespace ThemeParkTycoonGame
 
     public class NameChangingEventArgs : EventArgs
     {
-        public bool Handled { get; set; }
-        public string OldParkName { get; set; }
-        public string ParkName { get; set; }
+        public bool Handled
+        public string OldParkName
+        public string ParkName
     }
 
     public class GuestEnteredEventArgs : EventArgs
     {
-        public Guest Guest { get; set; }
+        public Guest Guest
     }
 
     public class WeatherChangedEventArgs : EventArgs
     {
-        public Weather OldWeather { get; set; }
-        public Weather Weather { get; set; }
+        public Weather OldWeather
+        public Weather Weather
     }
 }
