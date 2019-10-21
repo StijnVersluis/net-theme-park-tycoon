@@ -6,8 +6,26 @@ using System.Threading.Tasks;
 
 namespace ThemeParkTycoonGame
 {
-    public abstract class Ride : BuildableObject
+    public class Ride : BuildableObject
     {
-        public abstract List<Stat> StatisticBoosts { get; }
+        public List<Stat> StatisticBoosts;
+
+        public Ride()
+        {
+            // Default to free rides without a name or image, nor any statistic boosts
+            Name = "Untitled Ride";
+            Image = Properties.Resources.unavailable_481;
+            Cost = 0;
+            EntryFee = 0;
+            StatisticBoosts = new List<Stat>();
+        }
+
+        public Ride(string name, System.Drawing.Image image, decimal cost)
+            :this() // This causes the defaults in the default constructor to be set
+        {
+            Name = name;
+            Image = image;
+            Cost = cost;
+        }
     }
 }

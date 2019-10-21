@@ -10,25 +10,17 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class BuyRidesForm : Form
+    public partial class MarketplaceForm : Form
     {
         private Park park;
 
-        public BuyRidesForm(Park park)
+        public MarketplaceForm(Park park)
         {
             InitializeComponent();
 
             this.park = park;
 
-            List<Ride> buyableRides = new List<Ride>()
-            {
-                new Rides.Coasters.Python(),
-                new Rides.Coasters.RobinHood(),
-                new Rides.Coasters.VogelRok(),
-                new Rides.Coasters.Goliath(),
-                new Rides.Coasters.Baron1898(),
-            };
-
+            List<Ride> buyableRides = Marketplace.GetInstance().AvailableRides;
 
             ridesListView.LargeImageList = new ImageList();
             ridesListView.LargeImageList.ImageSize = new Size(64, 64);

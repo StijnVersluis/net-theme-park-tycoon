@@ -1,6 +1,6 @@
 ﻿namespace ThemeParkTycoonGame.UI
 {
-    partial class BuyRidesForm
+    partial class MarketplaceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Coasters", System.Windows.Forms.HorizontalAlignment.Left);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuyRidesForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarketplaceForm));
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ridesListView = new System.Windows.Forms.ListView();
@@ -88,7 +88,7 @@
             this.timeEnteredColumnHeader.Text = "Time Entered";
             this.timeEnteredColumnHeader.Width = 127;
             // 
-            // BuyRidesForm
+            // MarketplaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -96,8 +96,8 @@
             this.Controls.Add(this.ridesListView);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "BuyRidesForm";
-            this.Text = "Buy Rides";
+            this.Name = "MarketplaceForm";
+            this.Text = "Marketplace (Buy Rides & Shops)";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);

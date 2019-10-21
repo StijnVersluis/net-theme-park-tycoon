@@ -131,19 +131,19 @@ namespace ThemeParkTycoonGame
 
     public class NameChangingEventArgs : EventArgs
     {
-        public bool Handled
-        public string OldParkName
-        public string ParkName
+        public bool Handled;
+        public string OldParkName;
+        public string ParkName;
     }
 
     public class GuestEnteredEventArgs : EventArgs
     {
-        public Guest Guest
+        public Guest Guest;
     }
 
     public class WeatherChangedEventArgs : EventArgs
     {
-        public Weather OldWeather
-        public Weather Weather
+        public Weather OldWeather;
+        public Weather Weather;
     }
 }

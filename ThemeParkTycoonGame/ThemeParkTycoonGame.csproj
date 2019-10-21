@@ -47,16 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildableObject.cs" />
-    <Compile Include="Rides\Coasters\RobinHood.cs" />
-    <Compile Include="Rides\Coasters\Goliath.cs" />
-    <Compile Include="Rides\Coasters\Baron1898.cs" />
-    <Compile Include="Rides\Coasters\VogelRok.cs" />
-    <Compile Include="Rides\Coasters\Python.cs" />
-    <Compile Include="UI\BuyRidesForm.cs">
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Marketplace.cs" />
+    <Compile Include="UI\MarketplaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\BuyRidesForm.Designer.cs">
-      <DependentUpon>BuyRidesForm.cs</DependentUpon>
+    <Compile Include="UI\MarketplaceForm.Designer.cs">
+      <DependentUpon>MarketplaceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\WeatherForm.cs">
       <SubType>Form</SubType>
@@ -105,8 +102,8 @@
     <Compile Include="Stat.cs" />
     <Compile Include="Wallet.cs" />
     <Compile Include="Weather.cs" />
-    <EmbeddedResource Include="UI\BuyRidesForm.resx">
-      <DependentUpon>BuyRidesForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\MarketplaceForm.resx">
+      <DependentUpon>MarketplaceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\WeatherForm.resx">
       <DependentUpon>WeatherForm.cs</DependentUpon>
@@ -212,10 +209,7 @@
   <ItemGroup>
     <None Include="Resources\weather_sun_48.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Products\" />
-    <Folder Include="Shops\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\caterpie_48.png" />
   </ItemGroup>
@@ -236,6 +230,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\walibi_robin_hood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unavailable_48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unavailable_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

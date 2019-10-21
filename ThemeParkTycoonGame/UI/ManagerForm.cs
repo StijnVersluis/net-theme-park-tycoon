@@ -83,7 +83,7 @@ namespace ThemeParkTycoonGame.UI
 
         private void buyRideToolStripButton_Click(object sender, EventArgs e)
         {
-            BuyRidesForm form = new BuyRidesForm(park);
+            MarketplaceForm form = new MarketplaceForm(park);
             form.MdiParent = this;
             form.Show();
         }

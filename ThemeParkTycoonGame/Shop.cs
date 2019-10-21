@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ThemeParkTycoonGame
 {
-    public abstract class Shop : BuildableObject
+    public class Shop : BuildableObject
     {
-        public abstract List<Product> ProductsForSale { get; }
+        public List<Product> ProductsForSale { get; }
     }
 }

@@ -4,9 +4,9 @@ namespace ThemeParkTycoonGame
 {
     public abstract class BuildableObject
     {
-        public abstract string Name { get; }
-        public abstract Image Image { get; }
-        public decimal EntryFee { get; set; }
-        public decimal Cost { get; }
+        public string Name;
+        public Image Image;
+        public decimal EntryFee;
+        public decimal Cost;
     }
 }
