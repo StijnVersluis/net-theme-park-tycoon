@@ -21,7 +21,7 @@ namespace ThemeParkTycoonGame
             Image = image;
         }
 
-        private static void CreateWeatherTypesIfNotExists()
+        private static void CreateWeatherTypes()
         {
             numberGenerator = new Random();
 
@@ -32,6 +32,17 @@ namespace ThemeParkTycoonGame
                 new Weather("Stormy", Properties.Resources.weather_storm_48),
                 new Weather("Snow", Properties.Resources.weather_snow_48),
             };
+        }
+
+        private static void CreateWeatherTypesIfNotExists()
+        {
+            if (WeatherTypes != null)
+            {
+                // If we've already set the weather types, then stop.
+                return;
+            }
+
+            CreateWeatherTypes();
         }
 
         public static Weather GetRandom()

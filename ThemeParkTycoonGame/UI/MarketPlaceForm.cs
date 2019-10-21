@@ -20,7 +20,8 @@ namespace ThemeParkTycoonGame.UI
 
             this.park = park;
 
-            List<Ride> buyableRides = Marketplace.GetInstance().AvailableRides;
+            Marketplace marketplace = Marketplace.Instance;
+            List<Ride> buyableRides = marketplace.GetBuyableRides(park.ParkInventory);
 
             ridesListView.LargeImageList = new ImageList();
             ridesListView.LargeImageList.ImageSize = new Size(64, 64);
@@ -51,10 +52,11 @@ namespace ThemeParkTycoonGame.UI
                 // Cast the Tag (object) back to Ride (we know there's a Ride in there)
                 Ride ride = selectedRideItem.Tag as Ride;
 
-                if(park.ParkManagerWallet.Balance >= ride.Cost)
+                if(park.ParkWallet.Balance >= ride.Cost)
                 {
                     // TODO: Buy ride
                     MessageBox.Show(string.Format("TODO: Now it should buy '{0}'!", ride.Name));
+                    
                 }
                 else
                 {

@@ -18,7 +18,8 @@ namespace ThemeParkTycoonGame
         public event WeatherChangedEvent WeatherChanged;
 
         public List<Guest> Guests;
-        public Wallet ParkManagerWallet;
+        public Wallet ParkWallet;
+        public Inventory ParkInventory;
         public decimal EntryFee;
 
         private string name;
@@ -50,8 +51,11 @@ namespace ThemeParkTycoonGame
         public Park()
         {
             Guests = new List<Guest>();
-            ParkManagerWallet = new Wallet();
+            ParkWallet = new Wallet();
+            ParkInventory = new Inventory();
+            EntryFee = 0;
 
+            // Start with random weather
             DoChangeWeather();
         }
 
@@ -66,7 +70,7 @@ namespace ThemeParkTycoonGame
                 guest.Wallet.Balance -= EntryFee;
 
                 // Add the entry fee to the park manager's wallet
-                ParkManagerWallet.Balance += EntryFee;
+                ParkWallet.Balance += EntryFee;
             }
 
             // Add the guest to the guest list (so we can retrieve them later)

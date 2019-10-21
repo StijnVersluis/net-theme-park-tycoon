@@ -33,7 +33,7 @@ namespace ThemeParkTycoonGame.UI
 
         private void generateMoneyButton_Click(object sender, EventArgs e)
         {
-            this.park.ParkManagerWallet.Balance += 1000;
+            this.park.ParkWallet.Balance += 1000;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace ThemeParkTycoonGame.UI
 
             this.park = park;
 
-            RefreshBalance(park.ParkManagerWallet.Balance);
+            RefreshBalance(park.ParkWallet.Balance);
 
-            park.ParkManagerWallet.BalanceChanged += Wallet_BalanceChanged;
+            park.ParkWallet.BalanceChanged += Wallet_BalanceChanged;
         }
 
         private void Wallet_BalanceChanged(object sender, BalanceChangedEventArgs e)

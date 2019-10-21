@@ -10,14 +10,28 @@ namespace ThemeParkTycoonGame
     {
         private static Marketplace instance;
 
-        public List<Ride> AvailableRides;
-        public List<Shop> AvailableShops;
+        private List<Ride> purchasableRides;
+        private List<Shop> purchasableShops;
+
+        // Marketplace is a singleton, this is the way to get an instance
+        public static Marketplace Instance
+        {
+            get
+            {
+                // Make an instance only once
+                if (instance == null)
+                    instance = new Marketplace();
+
+                // Then always return that instance
+                return instance;
+            }
+        }
 
         // Marketplace is a singleton. This constructor is therefor private (so only GetInstance can make an instance)
         private Marketplace()
         {
             // Configure the rides that are available here
-            AvailableRides = new List<Ride>()
+            purchasableRides = new List<Ride>()
             {
                 new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000),
                 new Ride("Goliath", Properties.Resources.walibi_goliath, 25000),
@@ -27,19 +41,42 @@ namespace ThemeParkTycoonGame
             };
 
             // Configure shops that are available here
-            AvailableShops = new List<Shop>()
+            purchasableShops = new List<Shop>()
             {
 
             };
         }
 
-        // Marketplace is a singleton, this is the way to get an instance
-        public static Marketplace GetInstance()
+        // Takes the current inventory, so already purchased rides can be hidden
+        internal List<Ride> GetBuyableRides(Inventory currentInventory)
         {
-            if (instance == null)
-                instance = new Marketplace();
+            List<Ride> buyableRides = new List<Ride>();
 
-            return instance;
+            foreach (Ride item in purchasableRides)
+            {
+                if (!currentInventory.Contains(item))
+                {
+                    buyableRides.Add(item);
+                }
+            }
+
+            return buyableRides;
+        }
+
+        // Takes the current inventory, so already purchased rides can be hidden
+        internal List<Shop> GetBuyableShops(Inventory currentInventory)
+        {
+            List<Shop> buyableShops = new List<Shop>();
+
+            foreach (Shop item in purchasableShops)
+            {
+                if (!currentInventory.Contains(item))
+                {
+                    buyableShops.Add(item);
+                }
+            }
+
+            return buyableShops;
         }
     }
 }
