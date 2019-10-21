@@ -21,8 +21,32 @@ namespace ThemeParkTycoonGame.UI
             this.park = park;
 
             RefreshBalance(park.ParkWallet.Balance);
+            RefreshInventory(park.ParkInventory);
 
             park.ParkWallet.BalanceChanged += Wallet_BalanceChanged;
+        }
+
+        private void RefreshInventory(Inventory parkInventory)
+        {
+            List<BuildableObject> objects = parkInventory.All;
+
+            objectsListView.LargeImageList = new ImageList();
+            objectsListView.LargeImageList.ImageSize = new Size(64, 64);
+
+            for (int i = 0; i < objects.Count; i++)
+            {
+                BuildableObject ride = objects[i];
+
+                objectsListView.LargeImageList.Images.Add(ride.Image);
+
+                ListViewItem rideListViewItem = new ListViewItem();
+                rideListViewItem.Group = objectsListView.Groups[0];
+                rideListViewItem.Text = string.Format("{0}\r\n(${1})", ride.Name, ride.Cost);
+                rideListViewItem.ImageIndex = i;
+                rideListViewItem.Tag = ride;
+
+                objectsListView.Items.Add(rideListViewItem);
+            }
         }
 
         private void Wallet_BalanceChanged(object sender, BalanceChangedEventArgs e)

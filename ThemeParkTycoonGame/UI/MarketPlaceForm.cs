@@ -23,6 +23,7 @@ namespace ThemeParkTycoonGame.UI
             Marketplace marketplace = Marketplace.Instance;
             List<Ride> buyableRides = marketplace.GetBuyableRides(park.ParkInventory);
 
+            // Prepare a list to add all the images to for rides.
             ridesListView.LargeImageList = new ImageList();
             ridesListView.LargeImageList.ImageSize = new Size(64, 64);
 
@@ -35,6 +36,7 @@ namespace ThemeParkTycoonGame.UI
                 ListViewItem rideListViewItem = new ListViewItem();
                 rideListViewItem.Group = ridesListView.Groups[0];
                 rideListViewItem.Text = string.Format("{0}\r\n(${1})", ride.Name, ride.Cost);
+                // Reference the image by it's index (weird that Microsoft designed it this way)
                 rideListViewItem.ImageIndex = i;
                 rideListViewItem.Tag = ride;
 
@@ -54,9 +56,7 @@ namespace ThemeParkTycoonGame.UI
 
                 if(park.ParkWallet.Balance >= ride.Cost)
                 {
-                    // TODO: Buy ride
-                    MessageBox.Show(string.Format("TODO: Now it should buy '{0}'!", ride.Name));
-                    
+                    park.ParkInventory.Rides.Add(ride);
                 }
                 else
                 {

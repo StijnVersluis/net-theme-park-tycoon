@@ -8,6 +8,23 @@ namespace ThemeParkTycoonGame
 {
     public class Inventory
     {
+        // Returns a list with both shops and rides
+        public List<BuildableObject> All
+        {
+            get
+            {
+                List<BuildableObject> all = new List<BuildableObject>();
+
+                foreach (Shop item in Shops)
+                    all.Add(item);
+
+                foreach (Ride item in Rides)
+                    all.Add(item);
+
+                return all;
+            }
+        }
+
         public List<Shop> Shops;
         public List<Ride> Rides;
 
