@@ -41,6 +41,19 @@ namespace ThemeParkTycoonGame
             Rides.CollectionChanged += Object_CollectionChanged;
         }
 
+        public BuildableObject GetByName(string itemName)
+        {
+            foreach (Shop item in Shops)
+                if (item.Name == itemName)
+                    return item;
+
+            foreach (Ride item in Rides)
+                if (item.Name == itemName)
+                    return item;
+
+            return null;
+        }
+
         private void Object_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (InventoryChanged != null)

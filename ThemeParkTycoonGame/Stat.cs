@@ -1,8 +1,14 @@
-﻿namespace ThemeParkTycoonGame
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ThemeParkTycoonGame
 {
-    public abstract class Stat
+    public class Stat
     {
-        public abstract string Name { get; }
-        public abstract decimal Value { get; }
+        public StatType Type;
+        public float Value;
     }
 }

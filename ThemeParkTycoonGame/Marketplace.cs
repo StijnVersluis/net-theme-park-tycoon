@@ -33,14 +33,7 @@ namespace ThemeParkTycoonGame
         private Marketplace()
         {
             // Configure the rides that are available here
-            purchasableRides = new List<Ride>()
-            {
-                new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000),
-                new Ride("Goliath", Properties.Resources.walibi_goliath, 25000),
-                new Ride("Python", Properties.Resources.efteling_python, 10000),
-                new Ride("Robin Hood", Properties.Resources.walibi_robin_hood, 15000),
-                new Ride("Vogel Rok", Properties.Resources.efteling_vogelrok, 15000),
-            };
+            purchasableRides = Rides.All;
             purchasedRides = new List<Ride>();
 
             // Configure shops that are available here

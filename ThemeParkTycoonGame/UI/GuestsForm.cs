@@ -25,23 +25,32 @@ namespace ThemeParkTycoonGame.UI
 
         private void Park_GuestEntered(object sender, GuestEnteredEventArgs e)
         {
+            RefreshGuestList();
+        }
+
+        private void RefreshGuestList()
+        {
             guestsListView.Items.Clear();
 
+            // Action column
+            var actionColumn = guestsListView.Columns[2].Index;
+
             // When a guest enters, update this form
-            foreach (Guest g in park.Guests)
+            foreach (Guest guest in park.Guests)
             {
-                string[] columnData = new string[]{ g.Name, g.Wallet.Balance.ToString("N2"), g.TimeEntered.ToString() };
+                string[] columnData = new string[] { guest.Name, guest.Wallet.Balance.ToString("N2"), guest.CurrentAction, guest.TimeEntered.ToString() };
                 ListViewItem newItem = new ListViewItem(columnData);
-                newItem.Tag = g;
+                newItem.Tag = guest;
+
+                guest.ActionChanged += (s, ev) =>
+                {
+                    if (!guestsListView.InvokeRequired)
+                        newItem.SubItems[actionColumn].Text = ev.Action;
+                };
 
                 guestsListView.Items.Add(newItem);
             }
 
-            UpdateGuestCountLabel();
-        }
-
-        private void UpdateGuestCountLabel()
-        {
             toolStripStatusLabel.Text = string.Format("Total guests: {0}", guestsListView.Items.Count);
         }
 
@@ -70,6 +79,11 @@ namespace ThemeParkTycoonGame.UI
         bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
         {
             throw new NotImplementedException();
+        }
+
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            RefreshGuestList();
         }
     }
 }

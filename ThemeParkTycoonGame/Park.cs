@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ThemeParkTycoonGame
 {
-    public class Park
+    public class Park : GameObject
     {
         public delegate void NameChangingEvent(object sender, NameChangingEventArgs e);
         public event NameChangingEvent NameChanging;
@@ -21,6 +21,8 @@ namespace ThemeParkTycoonGame
         public Wallet ParkWallet;
         public Inventory ParkInventory;
         public decimal EntryFee;
+
+        private GuestController guestController;
 
         private string name;
         public string Name
@@ -54,6 +56,12 @@ namespace ThemeParkTycoonGame
             ParkWallet = new Wallet();
             ParkInventory = new Inventory();
             EntryFee = 0;
+
+            guestController = new GuestController(this, Guests);
+            guestController.Start();
+
+            // Start with 20k
+            ParkWallet.Balance += 20000;
 
             // Start with random weather
             DoChangeWeather();
