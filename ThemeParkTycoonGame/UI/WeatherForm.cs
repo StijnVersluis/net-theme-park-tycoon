@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class WeatherForm : Form
+    public partial class WeatherForm : Form, IPositionSelf
     {
         private Park park;
 
@@ -29,13 +29,24 @@ namespace ThemeParkTycoonGame.UI
         {
             RefreshWeather(e.Weather);
         }
-
+        
         private void RefreshWeather(Weather weather)
         {
             weatherLabel.Text = weather.Name;
             weatherPictureBox.Image = weather.Image;
 
             weatherLabel.Location = new Point((int)(weatherPictureBox.Location.X + (weatherPictureBox.Size.Width * .5) - (weatherLabel.Size.Width * .5)), weatherLabel.Location.Y);
+        }
+
+        void IPositionSelf.LoadPosition(int maxX, int maxY)
+        {
+            this.Left = (int)(maxX * .5);
+            this.Top = maxY;
+        }
+
+        bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
+        {
+            throw new NotImplementedException();
         }
     }
 }

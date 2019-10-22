@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class GuestsForm : Form
+    public partial class GuestsForm : Form, IPositionSelf
     {
         private Park park;
 
@@ -59,6 +59,17 @@ namespace ThemeParkTycoonGame.UI
                 form.MdiParent = this.MdiParent;
                 form.Show();
             }
+        }
+
+        void IPositionSelf.LoadPosition(int maxX, int maxY)
+        {
+            this.Left = (int)(maxX * .5);
+            this.Top = (int)(maxY * .5);
+        }
+
+        bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
+        {
+            throw new NotImplementedException();
         }
     }
 }

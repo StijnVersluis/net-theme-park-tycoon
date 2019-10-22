@@ -20,6 +20,8 @@ namespace ThemeParkTycoonGame.UI
         {
             InitializeComponent();
 
+            this.WindowState = FormWindowState.Maximized;
+
             park = new Park();
 
             // Hook to the park namechange to update the titlebar
@@ -27,6 +29,45 @@ namespace ThemeParkTycoonGame.UI
 
             // Change the park name to be something fun for the user
             park.Name = "Loopy Landscapes";
+        }
+
+        public MdiClient GetMdiClientWindow()
+        {
+            foreach (Control ctl in this.Controls)
+            {
+                if (ctl is MdiClient) return ctl as MdiClient;
+            }
+            return null;
+        }
+
+        private void ShowForm(Form form)
+        {
+            // Make this form a child of this ManagerForm (it will appear inside it, like with Paint.NET or old Windows software)
+            form.MdiParent = this;
+            form.Show();
+
+            if (form is IPositionSelf)
+            {
+                int maxX = Screen.PrimaryScreen.Bounds.Width;
+                int maxY = Screen.PrimaryScreen.Bounds.Height;
+
+                if (this.IsMdiContainer)
+                {
+                    MdiClient client = GetMdiClientWindow();
+                    maxX = client.Bounds.Width;
+                    maxY = client.Bounds.Height;
+                }
+
+                // Subtract our size from the max
+                maxX -= form.Bounds.Width;
+                maxY -= form.Bounds.Height;
+
+                // Move a bit more from the edge to hide the scrollbars
+                maxX -= 5;
+                maxY -= 5;
+
+                (form as IPositionSelf).LoadPosition(maxX, maxY);
+            }
         }
 
         private void Park_NameChanging(object sender, NameChangingEventArgs e)
@@ -38,12 +79,10 @@ namespace ThemeParkTycoonGame.UI
         {
             // When the manager form loads, open the following screens by default:
             parkConfigurationToolStripButton.PerformClick(); // pretend to click on the park button.
-            guestsToolStripButton.PerformClick(); // pretend to click on the guests button.
-            weatherToolStripButton.PerformClick(); 
-
             buyRideToolStripButton.PerformClick();
-
-            debugToolStripButton.PerformClick(); 
+            guestsToolStripButton.PerformClick();
+            weatherToolStripButton.PerformClick();
+            debugToolStripButton.PerformClick();
         }
 
         /*
@@ -52,40 +91,27 @@ namespace ThemeParkTycoonGame.UI
 
         private void guestsToolStripButton_Click(object sender, EventArgs e)
         {
-            GuestsForm form = new GuestsForm(park);
-
-            // Make this form a child of this ManagerForm (it will appear inside it, like with Paint.NET or old Windows software)
-            form.MdiParent = this;
-
-            form.Show();
+            ShowForm(new GuestsForm(park));
         }
 
         private void parkConfigurationToolStripButton_Click(object sender, EventArgs e)
         {
-            ParkConfigurationForm form = new ParkConfigurationForm(park);
-            form.MdiParent = this;
-            form.Show();
+            ShowForm(new ParkConfigurationForm(park));
         }
 
         private void debugToolStripButton_Click(object sender, EventArgs e)
         {
-            DebugForm form = new DebugForm(park);
-            form.MdiParent = this;
-            form.Show();
+            ShowForm(new DebugForm(park));
         }
 
         private void weatherToolStripButton_Click(object sender, EventArgs e)
         {
-            WeatherForm form = new WeatherForm(park);
-            form.MdiParent = this;
-            form.Show();
+            ShowForm(new WeatherForm(park));
         }
 
         private void buyRideToolStripButton_Click(object sender, EventArgs e)
         {
-            MarketplaceForm form = new MarketplaceForm(park);
-            form.MdiParent = this;
-            form.Show();
+            ShowForm(new MarketplaceForm(park));
         }
     }
 }

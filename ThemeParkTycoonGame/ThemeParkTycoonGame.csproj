@@ -49,6 +49,7 @@
     <Compile Include="BuildableObject.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Marketplace.cs" />
+    <Compile Include="UI\IPositionSelf.cs" />
     <Compile Include="UI\MarketplaceForm.cs">
       <SubType>Form</SubType>
     </Compile>

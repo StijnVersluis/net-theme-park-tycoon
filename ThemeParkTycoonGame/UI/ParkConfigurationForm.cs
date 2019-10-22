@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class ParkConfigurationForm : Form
+    public partial class ParkConfigurationForm : Form, IPositionSelf
     {
         private Park park;
 
@@ -78,6 +78,17 @@ namespace ThemeParkTycoonGame.UI
         private void ParkConfigurationForm_Load(object sender, EventArgs e)
         {
             nameTextBox.Text = park.Name;
+        }
+
+        void IPositionSelf.LoadPosition(int maxX, int maxY)
+        {
+            this.Left = 0;
+            this.Top = 0;
+        }
+
+        bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class MarketplaceForm : Form
+    public partial class MarketplaceForm : Form, IPositionSelf
     {
         private Park park;
 
@@ -21,6 +21,17 @@ namespace ThemeParkTycoonGame.UI
             this.park = park;
 
             RefreshRides();
+        }
+
+        void IPositionSelf.LoadPosition(int maxX, int maxY)
+        {
+            this.Left = (int) (maxX * .5);
+            this.Top = 0;
+        }
+
+        bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
+        {
+            throw new NotImplementedException();
         }
 
         private void RefreshRides()

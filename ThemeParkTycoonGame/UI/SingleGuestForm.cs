@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class SingleGuestForm : Form
+    public partial class SingleGuestForm : Form, IPositionSelf
     {
         Guest guest;
 
@@ -24,6 +24,17 @@ namespace ThemeParkTycoonGame.UI
             this.Text = string.Format("{0} (Entered park @ {1})", guest.Name, guest.TimeEntered);
 
             MessageBox.Show("TODO: The ride history is to be shown here.", "Under construction!");
+        }
+
+        void IPositionSelf.LoadPosition(int maxX, int maxY)
+        {
+            this.Left = (int)(maxX * .5);
+            this.Top = (int)(maxY * .5);
+        }
+
+        bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
+        {
+            throw new NotImplementedException();
         }
     }
 }

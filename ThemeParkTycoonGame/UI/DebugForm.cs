@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeParkTycoonGame.UI
 {
-    public partial class DebugForm : Form
+    public partial class DebugForm : Form, IPositionSelf
     {
         private Park park;
 
@@ -34,6 +34,19 @@ namespace ThemeParkTycoonGame.UI
         private void generateMoneyButton_Click(object sender, EventArgs e)
         {
             this.park.ParkWallet.Balance += 1000;
+        }
+    
+        // Should position this form. Occurs right after showing the form
+        void IPositionSelf.LoadPosition(int maxX, int maxY)
+        {
+            this.Left = maxX;
+            this.Top = maxY;
+        }
+
+        // Should position this form and return true (self moved). Or should return false (other form should move)
+        bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
+        {
+            throw new NotImplementedException();
         }
     }
 }
