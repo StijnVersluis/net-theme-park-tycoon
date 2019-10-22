@@ -39,6 +39,8 @@ namespace ThemeParkTycoonGame.UI
             Marketplace marketplace = Marketplace.Instance;
             List<Ride> buyableRides = marketplace.GetBuyableRides(park.ParkInventory);
 
+            ridesListView.Items.Clear();
+
             // Prepare a list to add all the images to for rides.
             ridesListView.LargeImageList = new ImageList();
             ridesListView.LargeImageList.ImageSize = new Size(64, 64);
