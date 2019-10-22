@@ -20,6 +20,11 @@ namespace ThemeParkTycoonGame.UI
 
             this.park = park;
 
+            RefreshRides();
+        }
+
+        private void RefreshRides()
+        {
             Marketplace marketplace = Marketplace.Instance;
             List<Ride> buyableRides = marketplace.GetBuyableRides(park.ParkInventory);
 
@@ -27,7 +32,7 @@ namespace ThemeParkTycoonGame.UI
             ridesListView.LargeImageList = new ImageList();
             ridesListView.LargeImageList.ImageSize = new Size(64, 64);
 
-            for (int i=0; i < buyableRides.Count; i++)
+            for (int i = 0; i < buyableRides.Count; i++)
             {
                 Ride ride = buyableRides[i];
 
@@ -49,19 +54,27 @@ namespace ThemeParkTycoonGame.UI
         {
             if (ridesListView.SelectedItems.Count > 0)
             {
+                Marketplace marketplace = Marketplace.Instance;
                 ListViewItem selectedRideItem = ridesListView.SelectedItems[0];
 
                 // Cast the Tag (object) back to Ride (we know there's a Ride in there)
                 Ride ride = selectedRideItem.Tag as Ride;
 
-                if(park.ParkWallet.Balance >= ride.Cost)
-                {
-                    park.ParkInventory.Rides.Add(ride);
-                }
-                else
+                if (park.ParkWallet.Balance < ride.Cost)
                 {
                     MessageBox.Show(string.Format("You do not have enough money to buy {0}!", ride.Name));
+                    return;
                 }
+
+                if (park.ParkInventory.Contains(ride))
+                {
+                    MessageBox.Show(string.Format("You already own {0}!", ride.Name));
+                    return;
+                }
+
+                marketplace.Buy(ride, park.ParkWallet, park.ParkInventory);
+
+                RefreshRides();
             }
         }
     }

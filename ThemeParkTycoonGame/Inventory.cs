@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,9 @@ namespace ThemeParkTycoonGame
 {
     public class Inventory
     {
+        public delegate void InventoryChangedEvent(object sender, InventoryChangedEventArgs e);
+        public event InventoryChangedEvent InventoryChanged;
+
         // Returns a list with both shops and rides
         public List<BuildableObject> All
         {
@@ -25,13 +29,26 @@ namespace ThemeParkTycoonGame
             }
         }
 
-        public List<Shop> Shops;
-        public List<Ride> Rides;
+        public ObservableCollection<Shop> Shops;
+        public ObservableCollection<Ride> Rides;
 
         public Inventory()
         {
-            Shops = new List<Shop>();
-            Rides = new List<Ride>();
+            Shops = new ObservableCollection<Shop>();
+            Rides = new ObservableCollection<Ride>();
+
+            Shops.CollectionChanged += Object_CollectionChanged;
+            Rides.CollectionChanged += Object_CollectionChanged;
+        }
+
+        private void Object_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (InventoryChanged != null)
+            {
+                InventoryChangedEventArgs eventArgs = new InventoryChangedEventArgs(this);
+
+                InventoryChanged.Invoke(this, eventArgs);
+            }
         }
 
         // Checks whether we already have a ride
@@ -60,6 +77,16 @@ namespace ThemeParkTycoonGame
             }
 
             return false;
+        }
+    }
+
+    public class InventoryChangedEventArgs : EventArgs
+    {
+        public Inventory Inventory;
+
+        public InventoryChangedEventArgs(Inventory inventory)
+        {
+            this.Inventory = inventory;
         }
     }
 }

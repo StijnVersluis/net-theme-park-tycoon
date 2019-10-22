@@ -24,6 +24,7 @@ namespace ThemeParkTycoonGame.UI
             RefreshInventory(park.ParkInventory);
 
             park.ParkWallet.BalanceChanged += Wallet_BalanceChanged;
+            park.ParkInventory.InventoryChanged += Inventory_Changed;
         }
 
         private void RefreshInventory(Inventory parkInventory)
@@ -52,6 +53,11 @@ namespace ThemeParkTycoonGame.UI
         private void Wallet_BalanceChanged(object sender, BalanceChangedEventArgs e)
         {
             RefreshBalance(e.Balance);
+        }
+
+        private void Inventory_Changed(object sender, InventoryChangedEventArgs e)
+        {
+            RefreshInventory(e.Inventory);
         }
 
         private void RefreshBalance(decimal balance)
