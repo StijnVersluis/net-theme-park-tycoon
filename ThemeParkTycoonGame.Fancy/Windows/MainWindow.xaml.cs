@@ -50,6 +50,14 @@ namespace ThemeParkTycoonGame.Fancy.Windows
 
             // Change the park name to be something fun for the user
             park.Name = "Loopy Landscapes";
+
+            // Make sure this window can be dragged
+            this.MouseDown += MainWindow_MouseDown;
+        }
+
+        private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }
