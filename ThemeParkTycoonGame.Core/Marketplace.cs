@@ -44,7 +44,7 @@ namespace ThemeParkTycoonGame.Core
             purchasedShops = new List<Shop>();
         }
 
-        public void Buy(BuildableObject rideOrShop, Wallet fromWallet, Inventory toInventory)
+        public void Buy(BuildableObject rideOrShop, Wallet fromWallet, ParkInventory toInventory)
         {
             if (fromWallet.Balance < rideOrShop.Cost)
             {
@@ -76,7 +76,7 @@ namespace ThemeParkTycoonGame.Core
         }
 
         // Takes the current inventory, so already purchased rides can be hidden
-        public List<Ride> GetBuyableRides(Inventory currentInventory)
+        public List<Ride> GetBuyableRides(ParkInventory currentInventory)
         {
             List<Ride> buyableRides = new List<Ride>();
 
@@ -97,7 +97,7 @@ namespace ThemeParkTycoonGame.Core
         }
 
         // Takes the current inventory, so already purchased rides can be hidden
-        public List<Shop> GetBuyableShops(Inventory currentInventory)
+        public List<Shop> GetBuyableShops(ParkInventory currentInventory)
         {
             List<Shop> buyableShops = new List<Shop>();
 

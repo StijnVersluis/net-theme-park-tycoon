@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GuestsForm));
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -37,7 +36,6 @@
             this.walletBalanceColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.actionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeEnteredColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,12 +91,6 @@
             this.timeEnteredColumnHeader.Text = "Time Entered";
             this.timeEnteredColumnHeader.Width = 100;
             // 
-            // updateTimer
-            // 
-            this.updateTimer.Enabled = true;
-            this.updateTimer.Interval = 1000;
-            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
-            // 
             // GuestsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +116,5 @@
         private System.Windows.Forms.ColumnHeader timeEnteredColumnHeader;
         private System.Windows.Forms.ColumnHeader walletBalanceColumnHeader;
         private System.Windows.Forms.ColumnHeader actionColumnHeader;
-        private System.Windows.Forms.Timer updateTimer;
     }
 }

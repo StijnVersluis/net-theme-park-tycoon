@@ -9,6 +9,8 @@ namespace ThemeParkTycoonGame.Core
 {
     public class GuestController
     {
+        public const int TICK_TIMEOUT = 1500;
+
         private List<Guest> targets;
         private Park park;
         private System.Timers.Timer timer;
@@ -20,15 +22,18 @@ namespace ThemeParkTycoonGame.Core
         {
             this.park = park;
             this.targets = targets;
+
+            // Show an exception if someone forgot to call 'DoTick' in their code
+            StartWarningCountdown();
         }
 
-        protected void DoTick(object source, System.Timers.ElapsedEventArgs e)
+        public void DoTick(int interval)
         {
-            Tick();
+            Tick(interval);
         }
 
         // A tick is a 'think' and as seen in the Start() methode happens at 1000ms intervals
-        private void Tick()
+        private void Tick(int interval)
         {
             /*
              * Test script to make everyone go to the python
@@ -57,17 +62,35 @@ namespace ThemeParkTycoonGame.Core
             /*
              * End of test script to make everyone go to the python
              */
+
+            // I want, based on the weather, a certain chance of a guest coming inside
+
+            // When a guest enters, their stats are randomly generated
+
+            // They get a random wallet amount to go spend in the park
+
+            // They pay immediately for the park
+
+            // They then go to their first preferred ride or stall based on their stats:
+
+            // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
+            // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
         }
 
-        internal void Start()
+        internal void StartWarningCountdown()
         {
             if (timer != null)
                 return;
 
             timer = new System.Timers.Timer();
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(DoTick);
-            timer.Interval = 1000; // number of milliseconds between each tick
+            timer.Elapsed += WarningTimer_Elapsed;
+            timer.Interval = TICK_TIMEOUT; // number of milliseconds between each tick
             timer.Start();
+        }
+
+        private void WarningTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            throw new Exception("Tick timed out! This means you didn't call 'GuestController.DoTick()' anywhere!");
         }
     }
 }

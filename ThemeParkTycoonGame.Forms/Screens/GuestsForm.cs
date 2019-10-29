@@ -27,6 +27,19 @@ namespace ThemeParkTycoonGame.Forms.Screens
         private void Park_GuestEntered(object sender, GuestEnteredEventArgs e)
         {
             RefreshGuestList();
+
+            e.Guest.Inventory.InventoryChanged += Guest_InventoryChanged;
+            e.Guest.ActionChanged += Guest_ActionChanged;
+        }
+
+        private void Guest_ActionChanged(object sender, Guest.ActionChangedEventArgs e)
+        {
+            RefreshGuestList();
+        }
+
+        private void Guest_InventoryChanged(object sender, InventoryChangedEventArgs e)
+        {
+            RefreshGuestList();
         }
 
         private void RefreshGuestList()
@@ -80,11 +93,6 @@ namespace ThemeParkTycoonGame.Forms.Screens
         bool IPositionSelf.PositionChallenged(int maxX, int maxY, Form challengingForm)
         {
             throw new NotImplementedException();
-        }
-
-        private void updateTimer_Tick(object sender, EventArgs e)
-        {
-            RefreshGuestList();
         }
     }
 }

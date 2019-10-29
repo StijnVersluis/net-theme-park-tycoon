@@ -15,6 +15,7 @@ namespace ThemeParkTycoonGame.Core
         public Wallet Wallet;
         public DateTime? TimeEntered;
         public Desire CurrentDesire { get; private set; }
+        public GuestInventory Inventory { get; set; }
 
         // An observable queue can be monitored
         public ObservableQueue<Desire> Desires;
@@ -28,6 +29,9 @@ namespace ThemeParkTycoonGame.Core
             // Give this guest a wallet with 100 bucks
             Wallet = new Wallet();
             Wallet.Balance = 100;
+
+            // Give an empty inventory
+            Inventory = new GuestInventory();
 
             // Give a guest basics stats
             foreach (StatType statType in StatTypes.GetByTarget(GameObjectType.Guest))

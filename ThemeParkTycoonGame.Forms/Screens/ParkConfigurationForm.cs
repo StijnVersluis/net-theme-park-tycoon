@@ -24,11 +24,11 @@ namespace ThemeParkTycoonGame.Forms.Screens
             RefreshBalance(park.ParkWallet.Balance);
             RefreshInventory(park.ParkInventory);
 
-            park.ParkWallet.BalanceChanged += Wallet_BalanceChanged;
-            park.ParkInventory.InventoryChanged += Inventory_Changed;
+            park.ParkWallet.BalanceChanged += ParkWallet_BalanceChanged;
+            park.ParkInventory.InventoryChanged += ParkInventory_Changed;
         }
 
-        private void RefreshInventory(Inventory parkInventory)
+        private void RefreshInventory(ParkInventory parkInventory)
         {
             List<BuildableObject> objects = parkInventory.All;
 
@@ -51,14 +51,14 @@ namespace ThemeParkTycoonGame.Forms.Screens
             }
         }
 
-        private void Wallet_BalanceChanged(object sender, BalanceChangedEventArgs e)
+        private void ParkWallet_BalanceChanged(object sender, BalanceChangedEventArgs e)
         {
             RefreshBalance(e.Balance);
         }
 
-        private void Inventory_Changed(object sender, InventoryChangedEventArgs e)
+        private void ParkInventory_Changed(object sender, InventoryChangedEventArgs e)
         {
-            RefreshInventory(e.Inventory);
+            RefreshInventory((ParkInventory) e.Inventory);
         }
 
         private void RefreshBalance(decimal balance)

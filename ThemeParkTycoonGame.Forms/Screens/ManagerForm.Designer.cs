@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.parkConfigurationToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -37,6 +38,7 @@
             this.buyRideToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.debugToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.tickTimer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +118,12 @@
             this.debugToolStripButton.Text = "Debugging";
             this.debugToolStripButton.Click += new System.EventHandler(this.debugToolStripButton_Click);
             // 
+            // tickTimer
+            // 
+            this.tickTimer.Enabled = true;
+            this.tickTimer.Interval = 1000;
+            this.tickTimer.Tick += new System.EventHandler(this.tickTimer_Tick);
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +152,7 @@
         private System.Windows.Forms.ToolStripButton weatherToolStripButton;
         private System.Windows.Forms.ToolStripButton buyRideToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Timer tickTimer;
     }
 }
 

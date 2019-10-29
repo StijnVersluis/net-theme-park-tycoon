@@ -114,5 +114,10 @@ namespace ThemeParkTycoonGame.Forms.Screens
         {
             ShowForm(new MarketplaceForm(park));
         }
+
+        private void tickTimer_Tick(object sender, EventArgs e)
+        {
+            this.park.GuestController.DoTick(tickTimer.Interval);
+        }
     }
 }

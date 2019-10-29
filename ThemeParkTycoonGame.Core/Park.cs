@@ -19,10 +19,10 @@ namespace ThemeParkTycoonGame.Core
 
         public List<Guest> Guests;
         public Wallet ParkWallet;
-        public Inventory ParkInventory;
+        public ParkInventory ParkInventory;
         public decimal EntryFee;
 
-        private GuestController guestController;
+        public GuestController GuestController;
 
         private string name;
         public string Name
@@ -54,11 +54,10 @@ namespace ThemeParkTycoonGame.Core
         {
             Guests = new List<Guest>();
             ParkWallet = new Wallet();
-            ParkInventory = new Inventory();
+            ParkInventory = new ParkInventory();
             EntryFee = 0;
 
-            guestController = new GuestController(this, Guests);
-            guestController.Start();
+            GuestController = new GuestController(this, Guests);
 
             // Start with 20k
             ParkWallet.Balance += 20000;
