@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThemeParkTycoonGame.Core;
 
 namespace ThemeParkTycoonGame.Fancy.Controls
 {
@@ -20,6 +21,28 @@ namespace ThemeParkTycoonGame.Fancy.Controls
     /// </summary>
     public partial class ParkControl : UserControl
     {
+        private Park park;
+        public Park Park
+        {
+            get
+            {
+                return park;
+            }
+            set
+            {
+                park = value;
+
+                this.DataContext = park;
+
+                // Using binding, we don't need all this like in WinForms:
+                //RefreshBalance(park.ParkWallet.Balance);
+                //RefreshInventory(park.ParkInventory);
+
+                //park.ParkWallet.BalanceChanged += Wallet_BalanceChanged;
+                //park.ParkInventory.InventoryChanged += Inventory_Changed;
+            }
+        }
+
         public ParkControl()
         {
             InitializeComponent();

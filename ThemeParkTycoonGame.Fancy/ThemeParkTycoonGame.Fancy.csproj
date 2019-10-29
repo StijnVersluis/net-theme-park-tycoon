@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WpfHelper.cs" />
     <Page Include="Controls\ParkDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,12 +102,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Resources\**"
-        CopyToOutputDirectory="PreserveNewest"
-        Link="Resources\%(RecursiveDir)\%(Filename)%(Extension)" />
+    <None Include="..\Resources\**" CopyToOutputDirectory="PreserveNewest" Link="Resources\%(RecursiveDir)\%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThemeParkTycoonGame.Core\ThemeParkTycoonGame.Core.csproj">
+      <Project>{8D84D669-2A34-4EE4-9058-E4458008FF61}</Project>
+      <Name>ThemeParkTycoonGame.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

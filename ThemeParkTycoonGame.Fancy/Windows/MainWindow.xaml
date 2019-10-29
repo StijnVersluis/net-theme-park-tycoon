@@ -6,9 +6,20 @@
         xmlns:local="clr-namespace:ThemeParkTycoonGame.Fancy.Windows"
         xmlns:controls="clr-namespace:ThemeParkTycoonGame.Fancy.Controls"
         mc:Ignorable="d"
-        Title="Theme Park Tycoon Simulation" Height="450" Width="800">
+        Title="{Binding Path=Name}" Height="450" Width="800" WindowStyle="None">
     <Grid>
-        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0">
+            <TextBlock Padding="5">
+                 <Run Text="Theme Park Tycoon Game - " />
+                 <Run Text="{Binding Name}" />
+            </TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="1">
             <TabControl>
                 <TabItem>
                     <TabItem.Header>
@@ -18,7 +29,8 @@
                             <TextBlock Text="Park" Foreground="Blue" />
                         </StackPanel>
                     </TabItem.Header>
-                    <controls:ParkControl />
+                    
+                    <controls:ParkControl x:Name="parkControl"/>
                 </TabItem>
                 
                 <TabItem Header="Security" />
