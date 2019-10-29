@@ -101,7 +101,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(ProjectDir)\..\Resources\**"
+    <Resource Include="$(ProjectDir)\..\Resources\**"
         CopyToOutputDirectory="PreserveNewest"
         Link="Resources\%(RecursiveDir)\%(Filename)%(Extension)" />
   </ItemGroup>

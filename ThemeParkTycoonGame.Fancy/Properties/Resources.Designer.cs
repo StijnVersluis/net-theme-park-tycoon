@@ -71,62 +71,12 @@ namespace ThemeParkTycoonGame.Fancy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap balloons_481 {
-            get {
-                object obj = ResourceManager.GetObject("balloons_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon caterpie_48 {
             get {
                 object obj = ResourceManager.GetObject("caterpie_48", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap caterpie_481 {
-            get {
-                object obj = ResourceManager.GetObject("caterpie_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap efteling_baron1898 {
-            get {
-                object obj = ResourceManager.GetObject("efteling_baron1898", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap efteling_python {
-            get {
-                object obj = ResourceManager.GetObject("efteling_python", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap efteling_vogelrok {
-            get {
-                object obj = ResourceManager.GetObject("efteling_vogelrok", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -141,42 +91,12 @@ namespace ThemeParkTycoonGame.Fancy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ferris_wheel_481 {
-            get {
-                object obj = ResourceManager.GetObject("ferris_wheel_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon food_48 {
             get {
                 object obj = ResourceManager.GetObject("food_48", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap food_481 {
-            get {
-                object obj = ResourceManager.GetObject("food_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap general_ledger_48 {
-            get {
-                object obj = ResourceManager.GetObject("general_ledger_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -191,32 +111,12 @@ namespace ThemeParkTycoonGame.Fancy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap guests_481 {
-            get {
-                object obj = ResourceManager.GetObject("guests_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon roller_coaster_48 {
             get {
                 object obj = ResourceManager.GetObject("roller_coaster_48", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap roller_coaster_481 {
-            get {
-                object obj = ResourceManager.GetObject("roller_coaster_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -231,32 +131,12 @@ namespace ThemeParkTycoonGame.Fancy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap schedule_event_481 {
-            get {
-                object obj = ResourceManager.GetObject("schedule_event_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon stats_48 {
             get {
                 object obj = ResourceManager.GetObject("stats_48", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap stats_481 {
-            get {
-                object obj = ResourceManager.GetObject("stats_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -271,92 +151,12 @@ namespace ThemeParkTycoonGame.Fancy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap unavailable_481 {
-            get {
-                object obj = ResourceManager.GetObject("unavailable_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap walibi_goliath {
-            get {
-                object obj = ResourceManager.GetObject("walibi_goliath", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap walibi_robin_hood {
-            get {
-                object obj = ResourceManager.GetObject("walibi_robin_hood", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap weather_rain_48 {
-            get {
-                object obj = ResourceManager.GetObject("weather_rain_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap weather_snow_48 {
-            get {
-                object obj = ResourceManager.GetObject("weather_snow_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap weather_storm_48 {
-            get {
-                object obj = ResourceManager.GetObject("weather_storm_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon weather_sun_48 {
             get {
                 object obj = ResourceManager.GetObject("weather_sun_48", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap weather_sun_481 {
-            get {
-                object obj = ResourceManager.GetObject("weather_sun_481", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap worker_48 {
-            get {
-                object obj = ResourceManager.GetObject("worker_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
