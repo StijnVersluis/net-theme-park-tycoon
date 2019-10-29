@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ThemeParkTycoonGame.Core;
+
+namespace ThemeParkTycoonGame.Fancy
+{
+    // Most of the methods in this class are called because .NET standard does not support System.Drawing
+    // In that project we have just given images the datatype 'object' instead of System.Drawing.Image.
+    // That's why we need to cast it back to an Image, when we get it from those kinds of 'object' properties
+    class WpfHelper
+    {
+        public static void DoSetup()
+        {
+            CreateWeatherTypes();
+            CreateRides();
+
+            // Set the image that appears when the ride image is not set.
+            Ride.RideImageUnavailableImage = Properties.Resources.unavailable_481;
+        }
+
+        private static void CreateWeatherTypes()
+        {
+            Weather.WeatherTypes = new Weather[]
+            {
+                new Weather("Sunny", Properties.Resources.weather_sun_48),
+                new Weather("Rainy", Properties.Resources.weather_rain_48),
+                new Weather("Stormy", Properties.Resources.weather_storm_48),
+                new Weather("Snow", Properties.Resources.weather_snow_48),
+            };
+        }
+
+        private static void CreateRides()
+        {
+            Rides.All = new List<Ride>()
+            {
+                new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000),
+                new Ride("Goliath", Properties.Resources.walibi_goliath, 25000),
+                new Ride("Python", Properties.Resources.efteling_python, 10000, new List<StatBoost>()
+                {
+                    new StatBoost()
+                    {
+                        StatType =  StatTypes.All[2]
+                    }
+                }),
+                new Ride("Robin Hood", Properties.Resources.walibi_robin_hood, 15000),
+                new Ride("Vogel Rok", Properties.Resources.efteling_vogelrok, 15000),
+            };
+        }
+    }
+}
