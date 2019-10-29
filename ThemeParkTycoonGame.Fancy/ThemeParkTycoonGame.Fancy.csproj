@@ -101,6 +101,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(ProjectDir)\..\Resources\**"
+        CopyToOutputDirectory="PreserveNewest"
+        Link="Resources\%(RecursiveDir)\%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
