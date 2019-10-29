@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ThemeParkTycoonGame.Core;
 
 namespace ThemeParkTycoonGame.Fancy
@@ -18,35 +14,38 @@ namespace ThemeParkTycoonGame.Fancy
             CreateRides();
 
             // Set the image that appears when the ride image is not set.
-            Ride.RideImageUnavailableImage = Properties.Resources.unavailable_481;
+            Ride.RideImageUnavailableImage = "pack://siteoforigin:,,,/Resources/unavailable_48.png";
         }
 
         private static void CreateWeatherTypes()
         {
             Weather.WeatherTypes = new Weather[]
             {
-                new Weather("Sunny", Properties.Resources.weather_sun_48),
-                new Weather("Rainy", Properties.Resources.weather_rain_48),
-                new Weather("Stormy", Properties.Resources.weather_storm_48),
-                new Weather("Snow", Properties.Resources.weather_snow_48),
+                new Weather("Sunny", "pack://siteoforigin:,,,/Resources/weather_sun_48.png"),
+                new Weather("Rainy", "pack://siteoforigin:,,,/Resources/weather_rain_48.png"),
+                new Weather("Stormy", "pack://siteoforigin:,,,/Resources/weather_storm_48.png"),
+                new Weather("Snow", "pack://siteoforigin:,,,/Resources/weather_snow_48.png"),
             };
         }
+
+        // Op deze manier kan een methode heel kort geschreven worden. We kunnen de inhoud zo later makkelijk hergebruiken.
+        public static List<StatBoost> GetStatBoostsForPython() => new List<StatBoost>()
+        {
+            new StatBoost()
+            {
+                StatType =  StatTypes.All[2]
+            }
+        };
 
         private static void CreateRides()
         {
             Rides.All = new List<Ride>()
             {
-                new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000),
-                new Ride("Goliath", Properties.Resources.walibi_goliath, 25000),
-                new Ride("Python", Properties.Resources.efteling_python, 10000, new List<StatBoost>()
-                {
-                    new StatBoost()
-                    {
-                        StatType =  StatTypes.All[2]
-                    }
-                }),
-                new Ride("Robin Hood", Properties.Resources.walibi_robin_hood, 15000),
-                new Ride("Vogel Rok", Properties.Resources.efteling_vogelrok, 15000),
+                new Ride("Baron 1898", "pack://siteoforigin:,,,/Resources/efteling_baron1898.png", 25000),
+                new Ride("Goliath", "pack://siteoforigin:,,,/Resources/walibi_goliath.png", 25000),
+                new Ride("Python", "pack://siteoforigin:,,,/Resources/efteling_python.png", 10000, GetStatBoostsForPython()),
+                new Ride("Robin Hood", "pack://siteoforigin:,,,/Resources/walibi_robin_hood.png", 15000),
+                new Ride("Vogel Rok", "pack://siteoforigin:,,,/Resources/efteling_vogelrok.png", 15000),
             };
         }
     }
