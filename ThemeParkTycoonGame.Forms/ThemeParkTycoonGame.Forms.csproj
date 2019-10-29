@@ -249,5 +249,11 @@
   <ItemGroup>
     <None Include="Resources\unavailable_48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThemeParkTycoonGame.Core\ThemeParkTycoonGame.Core.csproj">
+      <Project>{8d84d669-2a34-4ee4-9058-e4458008ff61}</Project>
+      <Name>ThemeParkTycoonGame.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
