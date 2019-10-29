@@ -11,7 +11,7 @@ namespace ThemeParkTycoonGame.Core
     {
         public override event InventoryChangedEvent InventoryChanged;
 
-        // Returns a list with both shops and rides
+        // Returns a list with all the guests products (drinks, foods, maps)
         public List<Product> All
         {
             get
@@ -48,7 +48,7 @@ namespace ThemeParkTycoonGame.Core
             }
         }
 
-        // Checks whether we already have a ride
+        // Checks whether we already have a certain product
         public bool Contains(Product product)
         {
             foreach (Product inventoryProduct in Products)
