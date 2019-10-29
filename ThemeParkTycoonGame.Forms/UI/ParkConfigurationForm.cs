@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThemeParkTycoonGame.Core;
 
 namespace ThemeParkTycoonGame.Forms.UI
 {
@@ -38,7 +39,7 @@ namespace ThemeParkTycoonGame.Forms.UI
             {
                 BuildableObject ride = objects[i];
 
-                objectsListView.LargeImageList.Images.Add(ride.Image);
+                objectsListView.LargeImageList.Images.Add((Image) ride.Image);
 
                 ListViewItem rideListViewItem = new ListViewItem();
                 rideListViewItem.Group = objectsListView.Groups[0];

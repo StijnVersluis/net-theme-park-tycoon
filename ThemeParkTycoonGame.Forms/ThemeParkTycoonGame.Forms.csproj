@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WindowsFormsHelper.cs" />
     <Compile Include="UI\Controls\DesireLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>

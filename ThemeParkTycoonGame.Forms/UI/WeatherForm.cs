@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThemeParkTycoonGame.Core;
 
 namespace ThemeParkTycoonGame.Forms.UI
 {
@@ -33,7 +34,7 @@ namespace ThemeParkTycoonGame.Forms.UI
         private void RefreshWeather(Weather weather)
         {
             weatherLabel.Text = weather.Name;
-            weatherPictureBox.Image = weather.Image;
+            weatherPictureBox.Image = (Image) weather.Image;
 
             weatherLabel.Location = new Point((int)(weatherPictureBox.Location.X + (weatherPictureBox.Size.Width * .5) - (weatherLabel.Size.Width * .5)), weatherLabel.Location.Y);
         }

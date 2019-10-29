@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThemeParkTycoonGame.Core;
 using ThemeParkTycoonGame.Forms.UI.Controls;
 
 namespace ThemeParkTycoonGame.Forms.UI

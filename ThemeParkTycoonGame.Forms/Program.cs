@@ -23,10 +23,12 @@ namespace ThemeParkTycoonGame.Forms
         [STAThread]
         static void Main()
         {
-            
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Call the setup to make this compatible with Windows Forms
+            WindowsFormsHelper.DoSetup();
+
             Application.Run(new UI.ManagerForm());
         }
     }
