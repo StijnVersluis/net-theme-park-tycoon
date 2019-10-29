@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using ThemeParkTycoonGame.Core;
 
-namespace ThemeParkTycoonGame.Forms.UI.Controls
+namespace ThemeParkTycoonGame.Forms.Controls
 {
     public partial class DesireLabel : UserControl
     {

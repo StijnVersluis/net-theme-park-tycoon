@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ThemeParkTycoonGame.Forms.UI
+namespace ThemeParkTycoonGame.Forms.Screens
 {
     internal interface IPositionSelf
     {

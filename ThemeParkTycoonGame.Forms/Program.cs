@@ -29,7 +29,7 @@ namespace ThemeParkTycoonGame.Forms
             // Call the setup to make this compatible with Windows Forms
             WindowsFormsHelper.DoSetup();
 
-            Application.Run(new UI.ManagerForm());
+            Application.Run(new Screens.ManagerForm());
         }
     }
 }

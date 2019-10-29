@@ -1,4 +1,4 @@
-﻿namespace ThemeParkTycoonGame.Forms.UI.Controls
+﻿namespace ThemeParkTycoonGame.Forms.Controls
 {
     partial class DesireLabel
     {

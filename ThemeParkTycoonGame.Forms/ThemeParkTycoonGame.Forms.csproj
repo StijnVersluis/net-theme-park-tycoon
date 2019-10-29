@@ -53,88 +53,88 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WindowsFormsHelper.cs" />
-    <Compile Include="UI\Controls\DesireLabel.cs">
+    <Compile Include="Controls\DesireLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\DesireLabel.Designer.cs">
+    <Compile Include="Controls\DesireLabel.Designer.cs">
       <DependentUpon>DesireLabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\IPositionSelf.cs" />
-    <Compile Include="UI\MarketplaceForm.cs">
+    <Compile Include="Screens\IPositionSelf.cs" />
+    <Compile Include="Screens\MarketplaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\MarketplaceForm.Designer.cs">
+    <Compile Include="Screens\MarketplaceForm.Designer.cs">
       <DependentUpon>MarketplaceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Controls\StatSlider.cs">
+    <Compile Include="Controls\StatSlider.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\StatSlider.Designer.cs">
+    <Compile Include="Controls\StatSlider.Designer.cs">
       <DependentUpon>StatSlider.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\WeatherForm.cs">
+    <Compile Include="Screens\WeatherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\WeatherForm.Designer.cs">
+    <Compile Include="Screens\WeatherForm.Designer.cs">
       <DependentUpon>WeatherForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\DebugForm.cs">
+    <Compile Include="Screens\DebugForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\DebugForm.Designer.cs">
+    <Compile Include="Screens\DebugForm.Designer.cs">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\SingleGuestForm.cs">
+    <Compile Include="Screens\SingleGuestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SingleGuestForm.Designer.cs">
+    <Compile Include="Screens\SingleGuestForm.Designer.cs">
       <DependentUpon>SingleGuestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\GuestsForm.cs">
+    <Compile Include="Screens\GuestsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\GuestsForm.Designer.cs">
+    <Compile Include="Screens\GuestsForm.Designer.cs">
       <DependentUpon>GuestsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ManagerForm.cs">
+    <Compile Include="Screens\ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ManagerForm.Designer.cs">
+    <Compile Include="Screens\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ParkConfigurationForm.cs">
+    <Compile Include="Screens\ParkConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ParkConfigurationForm.Designer.cs">
+    <Compile Include="Screens\ParkConfigurationForm.Designer.cs">
       <DependentUpon>ParkConfigurationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\Controls\DesireLabel.resx">
+    <EmbeddedResource Include="Controls\DesireLabel.resx">
       <DependentUpon>DesireLabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\StatSlider.resx">
+    <EmbeddedResource Include="Controls\StatSlider.resx">
       <DependentUpon>StatSlider.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\MarketplaceForm.resx">
+    <EmbeddedResource Include="Screens\MarketplaceForm.resx">
       <DependentUpon>MarketplaceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\WeatherForm.resx">
+    <EmbeddedResource Include="Screens\WeatherForm.resx">
       <DependentUpon>WeatherForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\DebugForm.resx">
+    <EmbeddedResource Include="Screens\DebugForm.resx">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SingleGuestForm.resx">
+    <EmbeddedResource Include="Screens\SingleGuestForm.resx">
       <DependentUpon>SingleGuestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\GuestsForm.resx">
+    <EmbeddedResource Include="Screens\GuestsForm.resx">
       <DependentUpon>GuestsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ManagerForm.resx">
+    <EmbeddedResource Include="Screens\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ParkConfigurationForm.resx">
+    <EmbeddedResource Include="Screens\ParkConfigurationForm.resx">
       <DependentUpon>ParkConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

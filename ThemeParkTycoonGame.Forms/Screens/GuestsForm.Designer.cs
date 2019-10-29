@@ -1,4 +1,4 @@
-﻿namespace ThemeParkTycoonGame.Forms.UI
+﻿namespace ThemeParkTycoonGame.Forms.Screens
 {
     partial class GuestsForm
     {

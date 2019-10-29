@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThemeParkTycoonGame.Core;
 
-namespace ThemeParkTycoonGame.Forms.UI
+namespace ThemeParkTycoonGame.Forms.Screens
 {
     public partial class WeatherForm : Form, IPositionSelf
     {

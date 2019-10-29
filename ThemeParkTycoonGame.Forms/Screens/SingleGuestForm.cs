@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThemeParkTycoonGame.Core;
-using ThemeParkTycoonGame.Forms.UI.Controls;
+using ThemeParkTycoonGame.Forms.Controls;
 
-namespace ThemeParkTycoonGame.Forms.UI
+namespace ThemeParkTycoonGame.Forms.Screens
 {
     public partial class SingleGuestForm : Form, IPositionSelf
     {
