@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ThemeParkTycoonGame.Forms
+namespace ThemeParkTycoonGame.Core
 {
     public abstract class BuildableObject : GameObject
     {

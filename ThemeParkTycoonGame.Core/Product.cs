@@ -1,4 +1,4 @@
-﻿namespace ThemeParkTycoonGame.Forms
+﻿namespace ThemeParkTycoonGame.Core
 {
     public class Product
     {

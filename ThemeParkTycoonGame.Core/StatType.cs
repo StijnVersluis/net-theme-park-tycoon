@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ThemeParkTycoonGame.Forms
+namespace ThemeParkTycoonGame.Core
 {
     public class StatType
     {

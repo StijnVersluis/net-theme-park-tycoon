@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ThemeParkTycoonGame.Forms
+namespace ThemeParkTycoonGame.Core
 {
     public class Desire
     {

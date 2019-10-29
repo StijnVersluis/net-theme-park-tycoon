@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ThemeParkTycoonGame.Forms
+namespace ThemeParkTycoonGame.Core
 {
     // This represents a thing that is part of the BuildableObject
     // Something that the Guest can do/pay for
