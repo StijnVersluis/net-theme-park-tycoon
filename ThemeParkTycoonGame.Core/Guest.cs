@@ -14,7 +14,9 @@ namespace ThemeParkTycoonGame.Core
         public string Name;
         public Wallet Wallet;
         public DateTime? TimeEntered;
-        public string CurrentAction { get; private set; }
+        public Desire CurrentDesire { get; private set; }
+
+        // An observable queue can be monitored
         public ObservableQueue<Desire> Desires;
 
         public Guest()
@@ -40,17 +42,38 @@ namespace ThemeParkTycoonGame.Core
             }
 
             Desires = new ObservableQueue<Desire>();
+            // React when an item is added or removed from the queue
             Desires.CollectionChanged += Guest_DesiresChanged;
+
+            RefreshDesires();
         }
 
         private void Guest_DesiresChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            string oldAction = this.CurrentAction;
+            RefreshDesires();
+        }
 
-            this.CurrentAction = (e.NewItems[0] as Desire).Reason;
+        private void RefreshDesires()
+        {
+            Desire oldAction = this.CurrentDesire;
+
+            // If there are no items in the desires collection, we just go idle
+            if (Desires.Count == 0)
+            {
+                this.CurrentDesire = new Desire()
+                {
+                    Reason = "Walking around aimlessly...",
+                    GainedAt = DateTime.Now,
+                };
+            }
+            else
+            {
+                // Set our new interest to the first item in the queue
+                this.CurrentDesire = Desires.Dequeue();
+            }
 
             if (ActionChanged != null)
-                ActionChanged.Invoke(this, new ActionChangedEventArgs(oldAction, this.CurrentAction));
+                ActionChanged.Invoke(this, new ActionChangedEventArgs(oldAction.Reason, this.CurrentDesire.Reason));
         }
 
         public override string ToString()

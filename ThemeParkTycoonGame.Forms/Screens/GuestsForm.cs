@@ -39,7 +39,7 @@ namespace ThemeParkTycoonGame.Forms.Screens
             // When a guest enters, update this form
             foreach (Guest guest in park.Guests)
             {
-                string[] columnData = new string[] { guest.Name, guest.Wallet.Balance.ToString("N2"), guest.CurrentAction, guest.TimeEntered.ToString() };
+                string[] columnData = new string[] { guest.Name, guest.Wallet.Balance.ToString("N2"), guest.CurrentDesire.Reason, guest.TimeEntered.ToString() };
                 ListViewItem newItem = new ListViewItem(columnData);
                 newItem.Tag = guest;
 

@@ -27,10 +27,16 @@ namespace ThemeParkTycoonGame.Core
             Tick();
         }
 
+        // A tick is a 'think' and as seen in the Start() methode happens at 1000ms intervals
         private void Tick()
         {
+            /*
+             * Test script to make everyone go to the python
+             */
+            // Get the python from the park inventory
             BuildableObject python = this.park.ParkInventory.GetByName("Python");
 
+            // Does the inventory not contain python? (User hasn't purchased it yet)
             if (python == null)
                 return;
 
@@ -42,13 +48,15 @@ namespace ThemeParkTycoonGame.Core
                     Desire wants = new Desire()
                     {
                         Object = python,
-                        Specific = null, // Just want to ride
                         Reason = "I feel compeled to go to the Python",
                     };
 
                     guest.Desires.Enqueue(wants);
                 }
             }
+            /*
+             * End of test script to make everyone go to the python
+             */
         }
 
         internal void Start()
@@ -58,7 +66,7 @@ namespace ThemeParkTycoonGame.Core
 
             timer = new System.Timers.Timer();
             timer.Elapsed += new System.Timers.ElapsedEventHandler(DoTick);
-            timer.Interval = 1000; // ms
+            timer.Interval = 1000; // number of milliseconds between each tick
             timer.Start();
         }
     }
