@@ -96,5 +96,10 @@ namespace ThemeParkTycoonGame.Core
                 Action = currentAction;
             }
         }
+
+        public void FollowDesire()
+        {
+            // Apply the rides' boost after riding the ride
+        }
     }
 }
