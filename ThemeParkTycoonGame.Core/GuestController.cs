@@ -13,18 +13,19 @@ namespace ThemeParkTycoonGame.Core
         public const int TICK_TIMEOUT = 1500;
         public const float CHANCE_ENTER_PARK = 0.5f;
 
-        private List<Guest> targets;
-        private Park park;
-        private System.Timers.Timer timer;
+        private GuestList targetGuests;
         private bool hasTicked;
+
+        private System.Timers.Timer warningTimer; // Code support
+
+        public float EntryChanceMultiplier;
 
         // Get the drink from ObjectSpecifics.All, make peeps want it. Sell it at python (because testing dont need shops yet)
 
         // Provide which guests this controller handles
-        public GuestController(Park park, List<Guest> targets)
+        public GuestController(ref GuestList targets)
         {
-            this.park = park;
-            this.targets = targets;
+            this.targetGuests = targets;
 
             // Show an exception if someone forgot to call 'DoTick' in their code
             StartWarningCountdown();
@@ -71,16 +72,31 @@ namespace ThemeParkTycoonGame.Core
             if (shouldGuestEnter())
             {
                 // Add a random guest to the park
-                this.park.AddGuest(getNewRandomGuest());
+                targetGuests.Add(getNewRandomGuest());
             }
 
-            // If a guest does not have a goal:
-                // They then desire to ride their first preferred ride or stall based on their stats:
+            // For all guests that don't have a goal: give them one
+            var guestsWithoutDesire = targetGuests.Where(g => g.Desires.Count == 0);
 
-                // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
-                // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
+            foreach (Guest guestWithoutDesire in guestsWithoutDesire)
+            {
+                giveDesires(guestWithoutDesire);
+            }
 
-                // Apply the rides' boost after riding the ride
+            // Let all guests act upon their desires.
+            foreach (Guest guest in targetGuests)
+            {
+                guest.FollowDesire();
+            }
+        }
+
+        private void giveDesires(Guest guest)
+        {
+            // They then desire to ride their first preferred ride or stall based on their stats:
+
+            // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
+            // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
+
         }
 
         private bool shouldGuestEnter()
@@ -88,7 +104,7 @@ namespace ThemeParkTycoonGame.Core
             double nextGuestEnterParkChance = NumberGenerator.NextDouble();
 
             // Lower/increase the chance based on weather
-            nextGuestEnterParkChance *= this.park.CurrentWeather.Multiplier;
+            nextGuestEnterParkChance *= EntryChanceMultiplier;
 
             if(nextGuestEnterParkChance < CHANCE_ENTER_PARK)
             {
@@ -96,7 +112,7 @@ namespace ThemeParkTycoonGame.Core
             }
 
             Debug.WriteLine("Did not let a new guest enter park. It wasn't their day");
-            Debug.WriteLine(this.park.CurrentWeather.Multiplier);
+            Debug.WriteLine(EntryChanceMultiplier);
             Debug.WriteLine(nextGuestEnterParkChance);
             Debug.WriteLine("====");
 
@@ -130,14 +146,14 @@ namespace ThemeParkTycoonGame.Core
 
         internal void StartWarningCountdown()
         {
-            if (timer != null)
+            if (warningTimer != null)
                 return;
 
             hasTicked = false;
-            timer = new System.Timers.Timer();
-            timer.Elapsed += WarningTimer_Elapsed;
-            timer.Interval = TICK_TIMEOUT; // number of milliseconds between each tick
-            timer.Start();
+            warningTimer = new System.Timers.Timer();
+            warningTimer.Elapsed += WarningTimer_Elapsed;
+            warningTimer.Interval = TICK_TIMEOUT; // number of milliseconds between each tick
+            warningTimer.Start();
         }
 
         private void WarningTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

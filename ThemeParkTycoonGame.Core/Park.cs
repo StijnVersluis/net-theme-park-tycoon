@@ -17,7 +17,7 @@ namespace ThemeParkTycoonGame.Core
         public delegate void WeatherChangedEvent(object sender, WeatherChangedEventArgs e);
         public event WeatherChangedEvent WeatherChanged;
 
-        public List<Guest> Guests;
+        public GuestList Guests;
         public Wallet ParkWallet;
         public ParkInventory ParkInventory;
         public decimal EntryFee;
@@ -52,12 +52,15 @@ namespace ThemeParkTycoonGame.Core
 
         public Park()
         {
-            Guests = new List<Guest>();
+            Guests = new GuestList();
+            Guests.GuestAdded += Guests_GuestAdded;
+
             ParkWallet = new Wallet();
             ParkInventory = new ParkInventory();
             EntryFee = 15;
 
-            GuestController = new GuestController(this, Guests);
+            GuestController = new GuestController(ref Guests);
+            this.WeatherChanged += Park_WeatherChanged;
 
             // Start with 20k
             ParkWallet.SubtractFromBalance(-20000, "Starting cash for running the park");
@@ -66,31 +69,15 @@ namespace ThemeParkTycoonGame.Core
             DoChangeWeather();
         }
 
-        public void AddGuest(Guest guest)
+        private void Guests_GuestAdded(object sender, GuestAddedEventArgs e)
         {
-            // Set the time entered if not set already
-            if(guest.TimeEntered == null)
-            {
-                guest.TimeEntered = DateTime.Now;
+            if (GuestEntered != null)
+                GuestEntered.Invoke(this, new GuestEnteredEventArgs(e.Guest));
+        }
 
-                // Charge the entry fee
-                guest.Wallet.SubtractFromBalance(EntryFee, "Paid for entry fee");
-
-                // Add the entry fee to the park manager's wallet
-                ParkWallet.SubtractFromBalance(-EntryFee, "Received entry fee for " + guest.Name);
-            }
-
-            // Add the guest to the guest list (so we can retrieve them later)
-            Guests.Add(guest);
-
-            // Check if someone is handling this event
-            if(GuestEntered != null)
-            {
-                GuestEntered.Invoke(this, new GuestEnteredEventArgs()
-                {
-                    Guest = guest,
-                });
-            }
+        private void Park_WeatherChanged(object sender, WeatherChangedEventArgs e)
+        {
+            GuestController.EntryChanceMultiplier = e.Weather.Multiplier;
         }
 
         public void DoChangeWeather(Weather weather = null)
@@ -150,6 +137,11 @@ namespace ThemeParkTycoonGame.Core
     public class GuestEnteredEventArgs : EventArgs
     {
         public Guest Guest;
+
+        public GuestEnteredEventArgs(Guest guest)
+        {
+            Guest = guest;
+        }
     }
 
     public class WeatherChangedEventArgs : EventArgs
