@@ -112,7 +112,7 @@ namespace ThemeParkTycoonGame.Core
                 Wallet = new Wallet(NumberGenerator.Next(50, 150)),
             };
 
-            var statTypes = StatTypes.GetByTarget(GameObjectType.Guest);
+            var statTypes = StatTypes.FindByTarget(GameObjectType.Guest);
 
             // When a guest enters, their stats are randomly generated
             foreach (var statType in statTypes)

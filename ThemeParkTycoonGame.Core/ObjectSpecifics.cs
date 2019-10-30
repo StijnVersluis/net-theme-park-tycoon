@@ -25,7 +25,7 @@ namespace ThemeParkTycoonGame.Core
                     {
                         new StatBoost()
                         {
-                            BoostMultiplier = 1.5f,
+                            Multiplier = 1.5f,
                             StatType = StatTypes.All[3], // TODO: No, get an identifier or something
                         }
                     }

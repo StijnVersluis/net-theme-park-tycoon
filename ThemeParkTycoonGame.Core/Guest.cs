@@ -34,7 +34,7 @@ namespace ThemeParkTycoonGame.Core
             Inventory = new GuestInventory();
 
             // Give a guest basics stats
-            foreach (StatType statType in StatTypes.GetByTarget(GameObjectType.Guest))
+            foreach (StatType statType in StatTypes.FindByTarget(GameObjectType.Guest))
             {
                 float asd = statType.GetBaseValue(this);
 

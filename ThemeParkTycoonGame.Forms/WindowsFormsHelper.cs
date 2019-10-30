@@ -32,19 +32,23 @@ namespace ThemeParkTycoonGame.Forms
             };
         }
 
+        public static List<StatBoost> GetStatBoostsForPython() => new List<StatBoost>()
+        {
+            new StatBoost()
+            {
+                StatType = StatTypes.GetByUniqueId("enthousiasm"),
+                Multiplier = 2f, // Going on Python makes you twice as excited as you were
+                Duration = 5,
+            }
+        };
+
         private static void CreateRides()
         {
             Rides.All = new List<Ride>()
             {
                 new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000),
                 new Ride("Goliath", Properties.Resources.walibi_goliath, 25000),
-                new Ride("Python", Properties.Resources.efteling_python, 10000, new List<StatBoost>()
-                {
-                    new StatBoost()
-                    {
-                        StatType =  StatTypes.All[2]
-                    }
-                }),
+                new Ride("Python", Properties.Resources.efteling_python, 10000, GetStatBoostsForPython()),
                 new Ride("Robin Hood", Properties.Resources.walibi_robin_hood, 15000),
                 new Ride("Vogel Rok", Properties.Resources.efteling_vogelrok, 15000),
             };

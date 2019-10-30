@@ -28,7 +28,6 @@ namespace ThemeParkTycoonGame.Fancy
             };
         }
 
-        // Op deze manier kan een methode heel kort geschreven worden. We kunnen de inhoud zo later makkelijk hergebruiken.
         public static List<StatBoost> GetStatBoostsForPython() => new List<StatBoost>()
         {
             new StatBoost()
