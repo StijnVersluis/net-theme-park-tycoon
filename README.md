@@ -44,6 +44,28 @@ If you wish to contribute, check out the [wiki](https://github.com/timothywalter
 
 
 
+To contribute:
+
+1. Create a [fork](<https://github.com/timothywalter/net-theme-park-tycoon/fork>) of this repository
+
+2. Strategize with your team (or self): what are you going to make
+
+3. Make changes (with your team) to your fork (keep the [CONVENTIONS](CONVENTIONS.md) in mind)
+
+4. When done, pull in the latest version of this repository (to merge any new code)
+
+5. Test the software on your fork
+
+6. When satisfied with the tested result, you can create a [Pull Request](<https://github.com/timothywalter/net-theme-park-tycoon/pulls>) to this repository.
+
+7. [@timothywalter](<https://github.com/timothywalter/>) will check your code and merge it into the master:
+
+   *Only tested code is merged into the master. If there are too many errors your changes will be rejected*
+
+8. Go back to `step 2`
+
+
+
 ## Attribution
 
 * All icons by [Icons8](https://icons8.com/)
