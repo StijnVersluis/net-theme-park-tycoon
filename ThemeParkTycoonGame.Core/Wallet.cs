@@ -8,6 +8,8 @@ namespace ThemeParkTycoonGame.Core
 {
     public class Wallet
     {
+        public const string DEFAULT_PAYMENT_REASON = "Paid to an unknown entity";
+
         public delegate void BalanceChangedEvent(object sender, BalanceChangedEventArgs e);
         public event BalanceChangedEvent BalanceChanged;
 
@@ -17,11 +19,13 @@ namespace ThemeParkTycoonGame.Core
             {
                 return balance;
             }
-            set
+            private set
             {
                 DoBalanceChange(value);
             }
         }
+
+        public List<PaymentLog> History { get; private set; }
 
         private void DoBalanceChange(decimal balance)
         {
@@ -37,6 +41,31 @@ namespace ThemeParkTycoonGame.Core
 
             this.balance = balance;
         }
+
+        public Wallet(decimal balance = 0)
+        {
+            this.Balance = balance;
+        }
+
+        public void RegisterPayment(decimal amount, string reason = null)
+        {
+            if (reason == null)
+                reason = DEFAULT_PAYMENT_REASON;
+
+            this.Balance -= amount;
+
+            this.History.Add(new PaymentLog()
+            {
+                Amount = amount,
+                Reason = reason
+            });
+        }
+    }
+
+    public class PaymentLog
+    {
+        public decimal Amount { get; set; }
+        public string Reason { get; set; }
     }
 
     public class BalanceChangedEventArgs : EventArgs
