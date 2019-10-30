@@ -28,7 +28,6 @@ namespace ThemeParkTycoonGame.Core
 
             // Give this guest a wallet with 100 bucks
             Wallet = new Wallet();
-            Wallet.SubtractFromBalance(-100, "Got salary to spend at a theme park");
 
             // Give an empty inventory
             Inventory = new GuestInventory();
@@ -58,7 +57,7 @@ namespace ThemeParkTycoonGame.Core
             if (Desires.Count == 0)
                 return;
 
-            Desire desireToFollow = Desires.Dequeue();
+            //Desire desireToFollow = Desires.Dequeue();
 
             // Do something with the object (like become damaged, or use products in stock)
             //desireToFollow.Object.

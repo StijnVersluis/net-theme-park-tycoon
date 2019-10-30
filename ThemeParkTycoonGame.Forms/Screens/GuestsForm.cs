@@ -22,45 +22,50 @@ namespace ThemeParkTycoonGame.Forms.Screens
             this.park = park;
 
             park.GuestEntered += Park_GuestEntered;
+            // park.GuestLeft +=
         }
 
         private void Park_GuestEntered(object sender, GuestEnteredEventArgs e)
         {
-            RefreshGuestList();
+            CreateGuestRow(e.Guest);
 
             e.Guest.Inventory.InventoryChanged += Guest_InventoryChanged;
         }
 
         private void Guest_InventoryChanged(object sender, InventoryChangedEventArgs e)
         {
-            RefreshGuestList();
+            //RefreshGuestList();
         }
 
         private void RefreshGuestList()
         {
             guestsListView.Items.Clear();
 
-            // Action column
-            var actionColumn = guestsListView.Columns[2].Index;
-
             // When a guest enters, update this form
             foreach (Guest guest in park.Guests)
             {
-                string[] columnData = new string[] { guest.Name, guest.Wallet.Balance.ToString("N2"), guest.CurrentDesire.Reason, guest.TimeEntered.ToString() };
-                ListViewItem newItem = new ListViewItem(columnData);
-                newItem.Tag = guest;
-
-                guest.ActionChanged += (s, ev) =>
-                {
-                    var tag = newItem.Tag;
-                    if (!guestsListView.InvokeRequired)
-                        newItem.SubItems[actionColumn].Text = ev.Action;
-                };
-
-                guestsListView.Items.Add(newItem);
+                CreateGuestRow(guest);
             }
 
             toolStripStatusLabel.Text = string.Format("Total guests: {0}", guestsListView.Items.Count);
+        }
+
+        private void CreateGuestRow(Guest guest)
+        {
+            string[] columnData = new string[] { guest.Name, guest.Wallet.Balance.ToString("N2"), guest.CurrentDesire.Reason, guest.TimeEntered.ToString() };
+            ListViewItem newItem = new ListViewItem(columnData);
+            newItem.Tag = guest;
+
+            // Action column TODO: Clean this up (2 is way too ~magic~)
+            var actionColumn = guestsListView.Columns[2].Index;
+
+            guest.ActionChanged += (s, ev) =>
+            {
+                if (!guestsListView.InvokeRequired)
+                    newItem.SubItems[actionColumn].Text = ev.Action;
+            };
+
+            guestsListView.Items.Add(newItem);
         }
 
         // Called when double clicked (check out the Activation property, it's set to TwoClick)

@@ -19,6 +19,7 @@ namespace ThemeParkTycoonGame.Core
 
         private System.Timers.Timer warningTimer; // Code support
 
+        public decimal MinimumCash; // Minimum cash a guest will have EntryFee for example
         public float EntryChanceMultiplier;
         public List<Desire> Desirables;
 
@@ -97,8 +98,11 @@ namespace ThemeParkTycoonGame.Core
         {
             ushort cycles = 0;
 
+            // Try a few times if the guest doesn't want any desires
             while(cycles++ < MAX_DECISION_CYCLES)
             {
+                bool foundDesire = false;
+
                 // Go through all rides
                 foreach (var desire in Desirables)
                 {
@@ -109,9 +113,13 @@ namespace ThemeParkTycoonGame.Core
                     // TODO See if chance makes us like them (stats will make things more/less likely)
                     desire.Reason = string.Format(desire.Object.GetRandomDesireReason(), desire.Object);
                     guest.Desires.Enqueue(desire);
+                    foundDesire = true;
 
                     break;
                 }
+
+                if (foundDesire)
+                    break;
             }
         }
 
@@ -142,7 +150,7 @@ namespace ThemeParkTycoonGame.Core
             {
                 CurrentStats = stats,
                 // Chosen at random bring between 50 and 150 cash into the park
-                Wallet = new Wallet(NumberGenerator.Next(50, 150)),
+                Wallet = new Wallet(NumberGenerator.Next((int) MinimumCash, (int)MinimumCash + 70)),
             };
 
             var statTypes = StatTypes.FindByTarget(GameObjectType.Guest);

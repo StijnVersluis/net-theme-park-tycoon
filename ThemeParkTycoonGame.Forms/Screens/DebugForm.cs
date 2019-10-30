@@ -25,13 +25,7 @@ namespace ThemeParkTycoonGame.Forms.Screens
         private void addGuestButton_Click(object sender, EventArgs e)
         {
             var guest = new Guest();
-
-
-            // Charge the entry fee
-            guest.Wallet.SubtractFromBalance(this.park.EntryFee, "Paid for entry fee");
-
-            // Add the entry fee to the park manager's wallet
-            this.park.ParkWallet.SubtractFromBalance(-this.park.EntryFee, "Received entry fee for " + guest.Name);
+            guest.Wallet.SubtractFromBalance(-this.park.EntryFee * 5, "Was spawned out of thin air with 5 times the entry fee to spend.");
 
             this.park.Guests.Add(guest);
         }

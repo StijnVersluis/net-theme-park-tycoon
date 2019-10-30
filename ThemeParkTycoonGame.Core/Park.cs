@@ -67,6 +67,8 @@ namespace ThemeParkTycoonGame.Core
             desirables = new List<Desire>();
 
             GuestController = new GuestController(desirables, ref Guests);
+            GuestController.MinimumCash = EntryFee; // TODO: when entryfee changes, this MinimumCash needs to as well.
+
             this.WeatherChanged += Park_WeatherChanged;
 
             // Start with 20k
@@ -86,7 +88,6 @@ namespace ThemeParkTycoonGame.Core
                 if (!(rideOrShop is Shop) && !(rideOrShop is Ride))
                 {
                     throw new ArgumentException("Not a ride or shop from inventory. Can't desire");
-                    continue;
                 }
 
                 desirables.Add(new Desire()
