@@ -19,33 +19,39 @@ namespace ThemeParkTycoonGame.Fancy.Controls
     /// <summary>
     /// Interaction logic for ParkControl.xaml
     /// </summary>
-    public partial class ParkDetailsView : UserControl
+    public partial class GuestsView : UserControl
     {
-        private Park park;
-        public Park Park
+        private GuestList guests;
+        public GuestList Guests
         {
             get
             {
-                return park;
+                return guests;
             }
             set
             {
-                park = value;
+                guests = value;
 
-                // Using binding, we don't need all this like in WinForms:
-                //RefreshBalance(park.ParkWallet.Balance);
-                //RefreshInventory(park.ParkInventory);
-
-                //park.ParkWallet.BalanceChanged += Wallet_BalanceChanged;
-                //park.ParkInventory.InventoryChanged += Inventory_Changed;
+                guests.GuestAdded += Guests_GuestAdded;
+                guests.GuestRemoved += Guests_GuestRemoved;
             }
         }
 
-        public ParkDetailsView()
+        public GuestsView()
         {
             InitializeComponent();
 
             this.DataContext = this;
+        }
+
+        private void Guests_GuestAdded(object sender, GuestAddedEventArgs e)
+        {
+            guestsListView.Items.Refresh();
+        }
+
+        private void Guests_GuestRemoved(object sender, GuestRemovedEventArgs e)
+        {
+            guestsListView.Items.Refresh();
         }
     }
 }

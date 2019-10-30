@@ -18,6 +18,9 @@
                  <Run Text="Theme Park Tycoon Game - " />
                  <Run Text="{Binding Name}" />
             </TextBlock>
+            <Button Click="CloseButton_Click"
+                    Content="Close"
+                    x:Name="closeButton"/>
         </StackPanel>
         <Grid Grid.Row="1">
             <TabControl>
@@ -30,10 +33,20 @@
                         </StackPanel>
                     </TabItem.Header>
                     
-                    <controls:ParkControl x:Name="parkControl"/>
+                    <controls:ParkDetailsView x:Name="parkControl"/>
                 </TabItem>
-                
-                <TabItem Header="Security" />
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://siteoforigin:,,,/Resources/guests_48.png"
+                                   Height="16"/>
+                            <TextBlock Text="Guests" Foreground="Blue" />
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <controls:GuestsView x:Name="guestsControl"/>
+                </TabItem>
             </TabControl>
         </Grid>
     </Grid>
