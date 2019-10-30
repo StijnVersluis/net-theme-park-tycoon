@@ -49,5 +49,20 @@ namespace ThemeParkTycoonGame.Forms.Screens
         {
             throw new NotImplementedException();
         }
+
+        private void editGuestButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Feature to edit stats and name of a guest from the guest list not completed");
+        }
+
+        private void generateMoreMoneyButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Feature to add 10,000 cash not completed");
+        }
+
+        private void moreButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Feature to do more than the above features is not done yet.");
+        }
     }
 }
