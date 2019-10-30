@@ -72,7 +72,7 @@ namespace ThemeParkTycoonGame.Core
             }
 
             // Always deduct the money
-            fromWallet.Balance -= rideOrShop.Cost;
+            fromWallet.SubtractFromBalance(rideOrShop.Cost, "Bought " + rideOrShop.Name);
         }
 
         // Takes the current inventory, so already purchased rides can be hidden

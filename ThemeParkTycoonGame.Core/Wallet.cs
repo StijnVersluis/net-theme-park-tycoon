@@ -45,9 +45,11 @@ namespace ThemeParkTycoonGame.Core
         public Wallet(decimal balance = 0)
         {
             this.Balance = balance;
+
+            this.History = new List<PaymentLog>();
         }
 
-        public void RegisterPayment(decimal amount, string reason = null)
+        public void SubtractFromBalance(decimal amount, string reason = null)
         {
             if (reason == null)
                 reason = DEFAULT_PAYMENT_REASON;

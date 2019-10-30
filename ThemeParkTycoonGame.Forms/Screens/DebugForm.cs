@@ -34,7 +34,7 @@ namespace ThemeParkTycoonGame.Forms.Screens
 
         private void generateMoneyButton_Click(object sender, EventArgs e)
         {
-            this.park.ParkWallet.Balance += 1000;
+            this.park.ParkWallet.SubtractFromBalance(-1000, "A mysterious being gave the park money.");
         }
     
         // Should position this form. Occurs right after showing the form

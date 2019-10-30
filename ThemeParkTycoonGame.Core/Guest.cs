@@ -28,7 +28,7 @@ namespace ThemeParkTycoonGame.Core
 
             // Give this guest a wallet with 100 bucks
             Wallet = new Wallet();
-            Wallet.Balance = 100;
+            Wallet.SubtractFromBalance(-100, "Got salary to spend at a theme park");
 
             // Give an empty inventory
             Inventory = new GuestInventory();

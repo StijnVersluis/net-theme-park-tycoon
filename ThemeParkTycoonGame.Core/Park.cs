@@ -60,7 +60,7 @@ namespace ThemeParkTycoonGame.Core
             GuestController = new GuestController(this, Guests);
 
             // Start with 20k
-            ParkWallet.Balance += 20000;
+            ParkWallet.SubtractFromBalance(-20000, "Starting cash for running the park");
 
             // Start with random weather
             DoChangeWeather();
@@ -74,10 +74,10 @@ namespace ThemeParkTycoonGame.Core
                 guest.TimeEntered = DateTime.Now;
 
                 // Charge the entry fee
-                guest.Wallet.Balance -= EntryFee;
+                guest.Wallet.SubtractFromBalance(EntryFee, "Paid for entry fee");
 
                 // Add the entry fee to the park manager's wallet
-                ParkWallet.Balance += EntryFee;
+                ParkWallet.SubtractFromBalance(-EntryFee, "Received entry fee for " + guest.Name);
             }
 
             // Add the guest to the guest list (so we can retrieve them later)

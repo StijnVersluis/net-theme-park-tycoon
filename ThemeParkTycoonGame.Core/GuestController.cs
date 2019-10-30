@@ -74,9 +74,6 @@ namespace ThemeParkTycoonGame.Core
                 this.park.AddGuest(getNewRandomGuest());
             }
 
-
-            // They get a random wallet amount to go spend in the park
-
             // They pay immediately for the park
 
             // They then go to their first preferred ride or stall based on their stats:
