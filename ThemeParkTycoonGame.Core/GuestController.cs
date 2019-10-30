@@ -12,6 +12,7 @@ namespace ThemeParkTycoonGame.Core
     {
         public const int TICK_TIMEOUT = 1500;
         public const float CHANCE_ENTER_PARK = 0.5f;
+        public const ushort MAX_DECISION_CYCLES = 3;
 
         private GuestList targetGuests;
         private bool hasTicked;
@@ -19,12 +20,14 @@ namespace ThemeParkTycoonGame.Core
         private System.Timers.Timer warningTimer; // Code support
 
         public float EntryChanceMultiplier;
+        public List<Desire> Desirables;
 
         // Get the drink from ObjectSpecifics.All, make peeps want it. Sell it at python (because testing dont need shops yet)
 
         // Provide which guests this controller handles
-        public GuestController(ref GuestList targets)
+        public GuestController(List<Desire> desirables, ref GuestList targets)
         {
+            this.Desirables = desirables;
             this.targetGuests = targets;
 
             // Show an exception if someone forgot to call 'DoTick' in their code
@@ -92,11 +95,24 @@ namespace ThemeParkTycoonGame.Core
 
         private void giveDesires(Guest guest)
         {
-            // They then desire to ride their first preferred ride or stall based on their stats:
+            ushort cycles = 0;
 
-            // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
-            // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
+            while(cycles++ < MAX_DECISION_CYCLES)
+            {
+                // Go through all rides
+                foreach (var desire in Desirables)
+                {
+                    // Apply stat modifiers to chance for this desire 
+                    // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
+                    // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
 
+                    // TODO See if chance makes us like them (stats will make things more/less likely)
+                    desire.Reason = string.Format(desire.Object.GetRandomDesireReason(), desire.Object);
+                    guest.Desires.Enqueue(desire);
+
+                    break;
+                }
+            }
         }
 
         private bool shouldGuestEnter()

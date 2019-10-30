@@ -50,16 +50,23 @@ namespace ThemeParkTycoonGame.Core
             }
         }
 
+        private List<Desire> desirables;
+
         public Park()
         {
             Guests = new GuestList();
             Guests.GuestAdded += Guests_GuestAdded;
 
             ParkWallet = new Wallet();
+
             ParkInventory = new ParkInventory();
+            ParkInventory.InventoryChanged += ParkInventory_InventoryChanged;
+
             EntryFee = 15;
 
-            GuestController = new GuestController(ref Guests);
+            desirables = new List<Desire>();
+
+            GuestController = new GuestController(desirables, ref Guests);
             this.WeatherChanged += Park_WeatherChanged;
 
             // Start with 20k
@@ -67,6 +74,29 @@ namespace ThemeParkTycoonGame.Core
 
             // Start with random weather
             DoChangeWeather();
+        }
+
+        private void ParkInventory_InventoryChanged(object sender, InventoryChangedEventArgs e)
+        {
+            // Update the list of things people desire, when the inventory gains a ride or shop
+            desirables = new List<Desire>();
+
+            foreach (BuildableObject rideOrShop in ParkInventory.All)
+            {
+                if (!(rideOrShop is Shop) && !(rideOrShop is Ride))
+                {
+                    throw new ArgumentException("Not a ride or shop from inventory. Can't desire");
+                    continue;
+                }
+
+                desirables.Add(new Desire()
+                {
+                    Object = (IDesirable) rideOrShop,
+                    Specific = null, // e.g: What drink, food or seat on a coaster?
+                });
+            }
+
+            GuestController.Desirables = desirables;
         }
 
         private void Guests_GuestAdded(object sender, GuestAddedEventArgs e)

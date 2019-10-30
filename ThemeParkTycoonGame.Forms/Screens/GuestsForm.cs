@@ -29,12 +29,6 @@ namespace ThemeParkTycoonGame.Forms.Screens
             RefreshGuestList();
 
             e.Guest.Inventory.InventoryChanged += Guest_InventoryChanged;
-            e.Guest.ActionChanged += Guest_ActionChanged;
-        }
-
-        private void Guest_ActionChanged(object sender, Guest.ActionChangedEventArgs e)
-        {
-            RefreshGuestList();
         }
 
         private void Guest_InventoryChanged(object sender, InventoryChangedEventArgs e)
@@ -58,6 +52,7 @@ namespace ThemeParkTycoonGame.Forms.Screens
 
                 guest.ActionChanged += (s, ev) =>
                 {
+                    var tag = newItem.Tag;
                     if (!guestsListView.InvokeRequired)
                         newItem.SubItems[actionColumn].Text = ev.Action;
                 };

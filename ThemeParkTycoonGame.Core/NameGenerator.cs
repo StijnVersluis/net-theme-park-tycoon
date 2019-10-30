@@ -6,16 +6,12 @@ namespace ThemeParkTycoonGame.Core
     public class NameGenerator
     {
         private static List<string> names;
-        private static Random numberGenerator;
 
         private static void CreateNameListIfNotExists()
         {
             if (names == null)
             {
                 names = new List<string>();
-
-                // Never re-create the 'Random' class or it will become less random.
-                numberGenerator = new Random();
 
                 names.AddRange(new string[]
                 {
@@ -328,7 +324,7 @@ namespace ThemeParkTycoonGame.Core
             // Run this first so that if the list of names and the generator have not been created, they will be created now.
             CreateNameListIfNotExists();
 
-            int randomIndex = numberGenerator.Next(0, names.Count);
+            int randomIndex = NumberGenerator.Next(0, names.Count);
 
             return names[randomIndex];
         }

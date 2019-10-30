@@ -44,13 +44,19 @@ namespace ThemeParkTycoonGame.Forms
 
         private static void CreateRides()
         {
+            var baron = new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000, 5);
+            var goliath = new Ride("Goliath", Properties.Resources.walibi_goliath, 25000, 10);
+            var python = new Ride("Python", Properties.Resources.efteling_python, 10000, 5, GetStatBoostsForPython());
+            var robinHood = new Ride("Robin Hood", Properties.Resources.walibi_robin_hood, 15000, 20);
+            var vogelRok = new Ride("Vogel Rok", Properties.Resources.efteling_vogelrok, 15000, 15);
+
             Rides.All = new List<Ride>()
             {
-                new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000, 5),
-                new Ride("Goliath", Properties.Resources.walibi_goliath, 25000, 10),
-                new Ride("Python", Properties.Resources.efteling_python, 10000, 5, GetStatBoostsForPython()),
-                new Ride("Robin Hood", Properties.Resources.walibi_robin_hood, 15000, 20),
-                new Ride("Vogel Rok", Properties.Resources.efteling_vogelrok, 15000, 15),
+                baron,
+                goliath,
+                python,
+                robinHood,
+                vogelRok,
             };
         }
     }

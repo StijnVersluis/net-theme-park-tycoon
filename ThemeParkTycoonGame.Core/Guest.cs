@@ -52,9 +52,18 @@ namespace ThemeParkTycoonGame.Core
             RefreshDesires();
         }
 
-        private void Guest_DesiresChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public void FollowDesire()
         {
-            RefreshDesires();
+            // If we have no desires, stop this method and go back
+            if (Desires.Count == 0)
+                return;
+
+            Desire desireToFollow = Desires.Dequeue();
+
+            // Do something with the object (like become damaged, or use products in stock)
+            //desireToFollow.Object.
+
+            // TODO: Apply the rides' boost after riding the ride
         }
 
         private void RefreshDesires()
@@ -73,7 +82,7 @@ namespace ThemeParkTycoonGame.Core
             else
             {
                 // Set our new interest to the first item in the queue
-                this.CurrentDesire = Desires.Dequeue();
+                this.CurrentDesire = Desires.Peek();
             }
 
             if (ActionChanged != null)
@@ -83,6 +92,11 @@ namespace ThemeParkTycoonGame.Core
         public override string ToString()
         {
             return Name;
+        }
+
+        private void Guest_DesiresChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            RefreshDesires();
         }
 
         public class ActionChangedEventArgs : EventArgs
@@ -95,11 +109,6 @@ namespace ThemeParkTycoonGame.Core
                 OldAction = oldAction;
                 Action = currentAction;
             }
-        }
-
-        public void FollowDesire()
-        {
-            // Apply the rides' boost after riding the ride
         }
     }
 }

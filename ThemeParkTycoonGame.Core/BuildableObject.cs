@@ -1,4 +1,6 @@
-﻿namespace ThemeParkTycoonGame.Core
+﻿using System;
+
+namespace ThemeParkTycoonGame.Core
 {
     public abstract class BuildableObject : GameObject
     {
@@ -8,5 +10,10 @@
         // Remember that everything inherits from object. Everything is an object.
         public decimal EntryFee;
         public decimal Cost;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

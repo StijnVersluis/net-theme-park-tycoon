@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ThemeParkTycoonGame.Core
 {
-    public class Ride : BuildableObject
+    public class Ride : BuildableObject, IDesirable
     {
         public static object RideImageUnavailableImage;
 
         public List<StatBoost> StatisticBoosts;
         public uint Duration; // In Ticks
+        public string[] DesireReasons;
 
         // default constructor
         public Ride()
@@ -22,6 +23,15 @@ namespace ThemeParkTycoonGame.Core
             Cost = 0;
             EntryFee = 0;
             StatisticBoosts = new List<StatBoost>();
+
+            DesireReasons = new string[]
+            {
+                "{0} looks awesome!",
+                "I'm definitily going on {0}!",
+                "{0} looks very cool!",
+                "I would love to go on {0}!",
+                "{0}, here I come!",
+            };
         }
 
         public Ride(string name, object image, decimal cost, uint durationInTicks, List<StatBoost> statBoosts = null)
@@ -35,5 +45,17 @@ namespace ThemeParkTycoonGame.Core
             if(statBoosts != null)
                 StatisticBoosts = statBoosts;
         }
+
+        public string GetRandomDesireReason()
+        {
+            int amountDesireReasons = DesireReasons.Length;
+
+            if (amountDesireReasons == 0)
+                return null;
+
+            var randomIndex = NumberGenerator.Next(amountDesireReasons);
+            return DesireReasons[randomIndex];
+        }
+
     }
 }
