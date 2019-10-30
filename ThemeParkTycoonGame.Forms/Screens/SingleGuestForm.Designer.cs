@@ -29,71 +29,51 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingleGuestForm));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.desiresGroupBox = new System.Windows.Forms.GroupBox();
-            this.desiresPanel = new System.Windows.Forms.Panel();
+            this.statsParent = new System.Windows.Forms.Panel();
             this.statsGroupBox = new System.Windows.Forms.GroupBox();
             this.statsPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.rideParent = new System.Windows.Forms.Panel();
+            this.desireParent = new System.Windows.Forms.Panel();
+            this.rideHistoryGroupBox = new System.Windows.Forms.GroupBox();
             this.actionsListView = new System.Windows.Forms.ListView();
             this.rideColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rideEntryTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.financeParent = new System.Windows.Forms.Panel();
+            this.desiresGroupBox = new System.Windows.Forms.GroupBox();
+            this.desiresPanel = new System.Windows.Forms.Panel();
+            this.financeGroupBox = new System.Windows.Forms.GroupBox();
             this.financeListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel1.SuspendLayout();
-            this.desiresGroupBox.SuspendLayout();
+            this.statsParent.SuspendLayout();
             this.statsGroupBox.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.rideParent.SuspendLayout();
+            this.desireParent.SuspendLayout();
+            this.rideHistoryGroupBox.SuspendLayout();
+            this.financeParent.SuspendLayout();
+            this.desiresGroupBox.SuspendLayout();
+            this.financeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // statsParent
             // 
-            this.panel1.Controls.Add(this.desiresGroupBox);
-            this.panel1.Controls.Add(this.statsGroupBox);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(767, 122);
-            this.panel1.TabIndex = 0;
-            // 
-            // desiresGroupBox
-            // 
-            this.desiresGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.desiresGroupBox.Controls.Add(this.desiresPanel);
-            this.desiresGroupBox.Location = new System.Drawing.Point(398, 3);
-            this.desiresGroupBox.Name = "desiresGroupBox";
-            this.desiresGroupBox.Size = new System.Drawing.Size(366, 116);
-            this.desiresGroupBox.TabIndex = 6;
-            this.desiresGroupBox.TabStop = false;
-            this.desiresGroupBox.Text = "Desires";
-            // 
-            // desiresPanel
-            // 
-            this.desiresPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.desiresPanel.AutoScroll = true;
-            this.desiresPanel.Location = new System.Drawing.Point(6, 19);
-            this.desiresPanel.Name = "desiresPanel";
-            this.desiresPanel.Size = new System.Drawing.Size(351, 91);
-            this.desiresPanel.TabIndex = 1;
+            this.statsParent.Controls.Add(this.statsGroupBox);
+            this.statsParent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.statsParent.Location = new System.Drawing.Point(0, 0);
+            this.statsParent.Name = "statsParent";
+            this.statsParent.Padding = new System.Windows.Forms.Padding(5);
+            this.statsParent.Size = new System.Drawing.Size(767, 122);
+            this.statsParent.TabIndex = 0;
             // 
             // statsGroupBox
             // 
-            this.statsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.statsGroupBox.Controls.Add(this.statsPanel);
-            this.statsGroupBox.Location = new System.Drawing.Point(6, 3);
+            this.statsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statsGroupBox.Location = new System.Drawing.Point(5, 5);
             this.statsGroupBox.Name = "statsGroupBox";
-            this.statsGroupBox.Size = new System.Drawing.Size(386, 116);
+            this.statsGroupBox.Size = new System.Drawing.Size(757, 112);
             this.statsGroupBox.TabIndex = 5;
             this.statsGroupBox.TabStop = false;
             this.statsGroupBox.Text = "Stats";
@@ -106,17 +86,39 @@
             this.statsPanel.AutoScroll = true;
             this.statsPanel.Location = new System.Drawing.Point(6, 19);
             this.statsPanel.Name = "statsPanel";
-            this.statsPanel.Size = new System.Drawing.Size(374, 91);
+            this.statsPanel.Size = new System.Drawing.Size(745, 87);
             this.statsPanel.TabIndex = 0;
             // 
-            // panel2
+            // rideParent
             // 
-            this.panel2.Controls.Add(this.actionsListView);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 122);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(767, 150);
-            this.panel2.TabIndex = 1;
+            this.rideParent.Controls.Add(this.rideHistoryGroupBox);
+            this.rideParent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rideParent.Location = new System.Drawing.Point(0, 122);
+            this.rideParent.Name = "rideParent";
+            this.rideParent.Padding = new System.Windows.Forms.Padding(5);
+            this.rideParent.Size = new System.Drawing.Size(767, 150);
+            this.rideParent.TabIndex = 1;
+            // 
+            // desireParent
+            // 
+            this.desireParent.Controls.Add(this.desiresGroupBox);
+            this.desireParent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.desireParent.Location = new System.Drawing.Point(0, 272);
+            this.desireParent.Name = "desireParent";
+            this.desireParent.Padding = new System.Windows.Forms.Padding(5);
+            this.desireParent.Size = new System.Drawing.Size(767, 136);
+            this.desireParent.TabIndex = 2;
+            // 
+            // rideHistoryGroupBox
+            // 
+            this.rideHistoryGroupBox.Controls.Add(this.actionsListView);
+            this.rideHistoryGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rideHistoryGroupBox.Location = new System.Drawing.Point(5, 5);
+            this.rideHistoryGroupBox.Name = "rideHistoryGroupBox";
+            this.rideHistoryGroupBox.Size = new System.Drawing.Size(757, 140);
+            this.rideHistoryGroupBox.TabIndex = 0;
+            this.rideHistoryGroupBox.TabStop = false;
+            this.rideHistoryGroupBox.Text = "Ride History";
             // 
             // actionsListView
             // 
@@ -126,10 +128,10 @@
             this.rideEntryTimeColumnHeader,
             this.statColumnHeader});
             this.actionsListView.Dock = System.Windows.Forms.DockStyle.Left;
-            this.actionsListView.Location = new System.Drawing.Point(0, 0);
+            this.actionsListView.Location = new System.Drawing.Point(3, 16);
             this.actionsListView.Name = "actionsListView";
-            this.actionsListView.Size = new System.Drawing.Size(767, 150);
-            this.actionsListView.TabIndex = 5;
+            this.actionsListView.Size = new System.Drawing.Size(767, 121);
+            this.actionsListView.TabIndex = 6;
             this.actionsListView.UseCompatibleStateImageBehavior = false;
             this.actionsListView.View = System.Windows.Forms.View.Details;
             // 
@@ -148,13 +150,48 @@
             this.statColumnHeader.Text = "Stats Changes";
             this.statColumnHeader.Width = 500;
             // 
-            // panel3
+            // financeParent
             // 
-            this.panel3.Controls.Add(this.financeListView);
-            this.panel3.Location = new System.Drawing.Point(0, 272);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(767, 125);
-            this.panel3.TabIndex = 2;
+            this.financeParent.Controls.Add(this.financeGroupBox);
+            this.financeParent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financeParent.Location = new System.Drawing.Point(0, 408);
+            this.financeParent.Name = "financeParent";
+            this.financeParent.Padding = new System.Windows.Forms.Padding(5);
+            this.financeParent.Size = new System.Drawing.Size(767, 131);
+            this.financeParent.TabIndex = 3;
+            // 
+            // desiresGroupBox
+            // 
+            this.desiresGroupBox.Controls.Add(this.desiresPanel);
+            this.desiresGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.desiresGroupBox.Location = new System.Drawing.Point(5, 5);
+            this.desiresGroupBox.Name = "desiresGroupBox";
+            this.desiresGroupBox.Size = new System.Drawing.Size(757, 126);
+            this.desiresGroupBox.TabIndex = 7;
+            this.desiresGroupBox.TabStop = false;
+            this.desiresGroupBox.Text = "Desires";
+            // 
+            // desiresPanel
+            // 
+            this.desiresPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.desiresPanel.AutoScroll = true;
+            this.desiresPanel.Location = new System.Drawing.Point(6, 19);
+            this.desiresPanel.Name = "desiresPanel";
+            this.desiresPanel.Size = new System.Drawing.Size(742, 101);
+            this.desiresPanel.TabIndex = 1;
+            // 
+            // financeGroupBox
+            // 
+            this.financeGroupBox.Controls.Add(this.financeListView);
+            this.financeGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financeGroupBox.Location = new System.Drawing.Point(5, 5);
+            this.financeGroupBox.Name = "financeGroupBox";
+            this.financeGroupBox.Size = new System.Drawing.Size(757, 121);
+            this.financeGroupBox.TabIndex = 0;
+            this.financeGroupBox.TabStop = false;
+            this.financeGroupBox.Text = "Financial History";
             // 
             // financeListView
             // 
@@ -163,10 +200,11 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.financeListView.Location = new System.Drawing.Point(0, 0);
+            this.financeListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financeListView.Location = new System.Drawing.Point(3, 16);
             this.financeListView.Name = "financeListView";
-            this.financeListView.Size = new System.Drawing.Size(767, 125);
-            this.financeListView.TabIndex = 6;
+            this.financeListView.Size = new System.Drawing.Size(751, 102);
+            this.financeListView.TabIndex = 7;
             this.financeListView.UseCompatibleStateImageBehavior = false;
             this.financeListView.View = System.Windows.Forms.View.Details;
             // 
@@ -189,35 +227,42 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 399);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(767, 539);
+            this.Controls.Add(this.financeParent);
+            this.Controls.Add(this.desireParent);
+            this.Controls.Add(this.rideParent);
+            this.Controls.Add(this.statsParent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SingleGuestForm";
             this.Text = "GuestForm";
-            this.panel1.ResumeLayout(false);
-            this.desiresGroupBox.ResumeLayout(false);
+            this.statsParent.ResumeLayout(false);
             this.statsGroupBox.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.rideParent.ResumeLayout(false);
+            this.desireParent.ResumeLayout(false);
+            this.rideHistoryGroupBox.ResumeLayout(false);
+            this.financeParent.ResumeLayout(false);
+            this.desiresGroupBox.ResumeLayout(false);
+            this.financeGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel statsParent;
         private System.Windows.Forms.GroupBox statsGroupBox;
         private System.Windows.Forms.Panel statsPanel;
-        private System.Windows.Forms.GroupBox desiresGroupBox;
-        private System.Windows.Forms.Panel desiresPanel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel rideParent;
+        private System.Windows.Forms.Panel desireParent;
+        private System.Windows.Forms.GroupBox rideHistoryGroupBox;
         private System.Windows.Forms.ListView actionsListView;
         private System.Windows.Forms.ColumnHeader rideColumnHeader;
         private System.Windows.Forms.ColumnHeader rideEntryTimeColumnHeader;
         private System.Windows.Forms.ColumnHeader statColumnHeader;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.GroupBox desiresGroupBox;
+        private System.Windows.Forms.Panel desiresPanel;
+        private System.Windows.Forms.Panel financeParent;
+        private System.Windows.Forms.GroupBox financeGroupBox;
         private System.Windows.Forms.ListView financeListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
