@@ -55,7 +55,7 @@ namespace ThemeParkTycoonGame.Core
             Guests = new List<Guest>();
             ParkWallet = new Wallet();
             ParkInventory = new ParkInventory();
-            EntryFee = 0;
+            EntryFee = 15;
 
             GuestController = new GuestController(this, Guests);
 

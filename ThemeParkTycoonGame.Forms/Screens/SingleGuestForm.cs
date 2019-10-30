@@ -22,6 +22,11 @@ namespace ThemeParkTycoonGame.Forms.Screens
 
             this.guest = guest;
 
+            this.guest.Wallet.BalanceChanged += (s, ev) =>
+            {
+                RefreshFinances();
+            };
+
             guest.ActionChanged += (s, ev) =>
             {
                 RefreshDesires();
@@ -34,6 +39,7 @@ namespace ThemeParkTycoonGame.Forms.Screens
             //RefreshRideHistory();
             RefreshDesires();
             RefreshStats();
+            RefreshFinances();
         }
 
         private void RefreshDesires()
@@ -68,6 +74,21 @@ namespace ThemeParkTycoonGame.Forms.Screens
                 slider.Top = numSliders++ * slider.Height;
 
                 statsPanel.Controls.Add(slider);
+            }
+        }
+
+        private void RefreshFinances()
+        {
+            // clear the panel
+            financeListView.Items.Clear();
+
+            foreach (TransactionLog log in this.guest.Wallet.History)
+            {
+                financeListView.Items.Add(new ListViewItem(new string[] {
+                    (-log.Amount).ToString(),
+                    log.Time.ToString(),
+                    log.Reason,
+                }));
             }
         }
 

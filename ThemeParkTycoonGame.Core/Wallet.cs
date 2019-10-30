@@ -25,7 +25,7 @@ namespace ThemeParkTycoonGame.Core
             }
         }
 
-        public List<PaymentLog> History { get; private set; }
+        public List<TransactionLog> History { get; private set; }
 
         private void DoBalanceChange(decimal balance)
         {
@@ -44,9 +44,9 @@ namespace ThemeParkTycoonGame.Core
 
         public Wallet(decimal balance = 0)
         {
-            this.Balance = balance;
+            this.History = new List<TransactionLog>();
 
-            this.History = new List<PaymentLog>();
+            SubtractFromBalance(-balance, "Got salary to spend at a theme park");
         }
 
         public void SubtractFromBalance(decimal amount, string reason = null)
@@ -56,7 +56,7 @@ namespace ThemeParkTycoonGame.Core
 
             this.Balance -= amount;
 
-            this.History.Add(new PaymentLog()
+            this.History.Add(new TransactionLog()
             {
                 Amount = amount,
                 Reason = reason
@@ -64,10 +64,16 @@ namespace ThemeParkTycoonGame.Core
         }
     }
 
-    public class PaymentLog
+    public class TransactionLog
     {
+        public TransactionLog()
+        {
+            this.Time = DateTime.Now;
+        }
+
         public decimal Amount { get; set; }
         public string Reason { get; set; }
+        public DateTime Time { get; set; }
     }
 
     public class BalanceChangedEventArgs : EventArgs
