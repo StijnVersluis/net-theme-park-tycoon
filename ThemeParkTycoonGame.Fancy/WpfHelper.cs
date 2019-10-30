@@ -21,10 +21,10 @@ namespace ThemeParkTycoonGame.Fancy
         {
             Weather.WeatherTypes = new Weather[]
             {
-                new Weather("Sunny", "pack://siteoforigin:,,,/Resources/weather_sun_48.png"),
-                new Weather("Rainy", "pack://siteoforigin:,,,/Resources/weather_rain_48.png"),
-                new Weather("Stormy", "pack://siteoforigin:,,,/Resources/weather_storm_48.png"),
-                new Weather("Snow", "pack://siteoforigin:,,,/Resources/weather_snow_48.png"),
+                new Weather("Sunny", "pack://siteoforigin:,,,/Resources/weather_sun_48.png", 1.5f),
+                new Weather("Rainy", "pack://siteoforigin:,,,/Resources/weather_rain_48.png", 0.5f),
+                new Weather("Stormy", "pack://siteoforigin:,,,/Resources/weather_storm_48.png", 0.25f),
+                new Weather("Snow", "pack://siteoforigin:,,,/Resources/weather_snow_48.png", 0.3f),
             };
         }
 

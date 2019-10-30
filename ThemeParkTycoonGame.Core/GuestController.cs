@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -10,10 +11,12 @@ namespace ThemeParkTycoonGame.Core
     public class GuestController
     {
         public const int TICK_TIMEOUT = 1500;
+        public const float CHANCE_ENTER_PARK = 0.5f;
 
         private List<Guest> targets;
         private Park park;
         private System.Timers.Timer timer;
+        private bool hasTicked;
 
         // Get the drink from ObjectSpecifics.All, make peeps want it. Sell it at python (because testing dont need shops yet)
 
@@ -35,37 +38,42 @@ namespace ThemeParkTycoonGame.Core
         // A tick is a 'think' and as seen in the Start() methode happens at 1000ms intervals
         private void Tick(int interval)
         {
+            hasTicked = true;
+
             /*
              * Test script to make everyone go to the python
              */
             // Get the python from the park inventory
-            BuildableObject python = this.park.ParkInventory.GetByName("Python");
+            //BuildableObject python = this.park.ParkInventory.GetByName("Python");
 
-            // Does the inventory not contain python? (User hasn't purchased it yet)
-            if (python == null)
-                return;
+            //// Does the inventory not contain python? (User hasn't purchased it yet)
+            //if (python == null)
+            //    return;
 
-            // Go to Python, ride it and get bonus        
-            foreach (Guest guest in this.targets)
-            {
-                if(guest.Desires.Count < 1)
-                {
-                    Desire wants = new Desire()
-                    {
-                        Object = python,
-                        Reason = "I feel compeled to go to the Python",
-                    };
+            //// Go to Python, ride it and get bonus        
+            //foreach (Guest guest in this.targets)
+            //{
+            //    if(guest.Desires.Count < 1)
+            //    {
+            //        Desire wants = new Desire()
+            //        {
+            //            Object = python,
+            //            Reason = "I feel compeled to go to the Python",
+            //        };
 
-                    guest.Desires.Enqueue(wants);
-                }
-            }
+            //        guest.Desires.Enqueue(wants);
+            //    }
+            //}
             /*
              * End of test script to make everyone go to the python
              */
+            // Based on the weather, a certain chance of a guest coming inside
+            if (shouldGuestEnter())
+            {
+                // Add a random guest to the park
+                this.park.AddGuest(getNewRandomGuest());
+            }
 
-            // I want, based on the weather, a certain chance of a guest coming inside
-
-            // When a guest enters, their stats are randomly generated
 
             // They get a random wallet amount to go spend in the park
 
@@ -77,11 +85,57 @@ namespace ThemeParkTycoonGame.Core
             // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
         }
 
+        private bool shouldGuestEnter()
+        {
+            double nextGuestEnterParkChance = NumberGenerator.NextDouble();
+
+            // Lower/increase the chance based on weather
+            nextGuestEnterParkChance *= this.park.CurrentWeather.Multiplier;
+
+            if(nextGuestEnterParkChance < CHANCE_ENTER_PARK)
+            {
+                return true;
+            }
+
+            Debug.WriteLine("Did not let a new guest enter park. It wasn't their day");
+            Debug.WriteLine(this.park.CurrentWeather.Multiplier);
+            Debug.WriteLine(nextGuestEnterParkChance);
+            Debug.WriteLine("====");
+
+            return false;
+        }
+
+        private Guest getNewRandomGuest()
+        {
+            List<Stat> stats = new List<Stat>();
+            Guest guest = new Guest()
+            {
+                CurrentStats = stats,
+                // Chosen at random bring between 50 and 150 cash into the park
+                Wallet = new Wallet(NumberGenerator.Next(50, 150)),
+            };
+
+            var statTypes = StatTypes.GetByTarget(GameObjectType.Guest);
+
+            // When a guest enters, their stats are randomly generated
+            foreach (var statType in statTypes)
+            {
+                stats.Add(new Stat()
+                {
+                    Type = statType,
+                    Value = statType.GetBaseValue(guest)
+                });
+            }
+
+            return guest;
+        }
+
         internal void StartWarningCountdown()
         {
             if (timer != null)
                 return;
 
+            hasTicked = false;
             timer = new System.Timers.Timer();
             timer.Elapsed += WarningTimer_Elapsed;
             timer.Interval = TICK_TIMEOUT; // number of milliseconds between each tick
@@ -90,7 +144,8 @@ namespace ThemeParkTycoonGame.Core
 
         private void WarningTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            throw new Exception("Tick timed out! This means you didn't call 'GuestController.DoTick()' anywhere!");
+            if(!hasTicked)
+                throw new Exception("Tick timed out! This means you didn't call 'GuestController.DoTick()' anywhere! You should call DoTick at least every " + TICK_TIMEOUT + "milliseconds.");
         }
     }
 }

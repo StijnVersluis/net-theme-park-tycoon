@@ -19,7 +19,7 @@ namespace ThemeParkTycoonGame.Core
             {
                 new StatType("Maintenance Required", null, GameObjectType.BuildableObject, 0, 1),
                 new StatType("Waiting Time", 0, GameObjectType.BuildableObject),
-                new StatType("Entertained", null, GameObjectType.Guest, 0, 40),
+                new StatType("Enthousiasm", null, GameObjectType.Guest, 0, 40),
                 new StatType("Hunger", null, GameObjectType.Guest, 0, 20),
                 new StatType("Thirst", null, GameObjectType.Guest, 0, 20),
             };
