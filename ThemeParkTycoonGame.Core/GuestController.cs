@@ -74,12 +74,13 @@ namespace ThemeParkTycoonGame.Core
                 this.park.AddGuest(getNewRandomGuest());
             }
 
-            // They pay immediately for the park
+            // If a guest does not have a goal:
+                // They then desire to ride their first preferred ride or stall based on their stats:
 
-            // They then go to their first preferred ride or stall based on their stats:
+                // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
+                // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
 
-            // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
-            // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
+                // Apply the rides' boost after riding the ride
         }
 
         private bool shouldGuestEnter()
