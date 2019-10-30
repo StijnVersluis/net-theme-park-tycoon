@@ -11,7 +11,9 @@ namespace ThemeParkTycoonGame.Core
         public static object RideImageUnavailableImage;
 
         public List<StatBoost> StatisticBoosts;
+        public uint Duration; // In Ticks
 
+        // default constructor
         public Ride()
         {
             // Default to free rides without a name or image, nor any statistic boosts
@@ -22,12 +24,13 @@ namespace ThemeParkTycoonGame.Core
             StatisticBoosts = new List<StatBoost>();
         }
 
-        public Ride(string name, object image, decimal cost, List<StatBoost> statBoosts = null)
+        public Ride(string name, object image, decimal cost, uint durationInTicks, List<StatBoost> statBoosts = null)
             :this() // This causes the defaults in the default constructor to be set
         {
             Name = name;
             Image = image;
             Cost = cost;
+            Duration = durationInTicks;
 
             if(statBoosts != null)
                 StatisticBoosts = statBoosts;

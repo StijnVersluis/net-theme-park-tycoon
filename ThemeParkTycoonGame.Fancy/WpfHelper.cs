@@ -32,7 +32,9 @@ namespace ThemeParkTycoonGame.Fancy
         {
             new StatBoost()
             {
-                StatType =  StatTypes.All[2]
+                StatType = StatTypes.GetByUniqueId("enthousiasm"),
+                Multiplier = 2f, // Going on Python makes you twice as excited as you were
+                Duration = 5,
             }
         };
 
@@ -40,11 +42,11 @@ namespace ThemeParkTycoonGame.Fancy
         {
             Rides.All = new List<Ride>()
             {
-                new Ride("Baron 1898", "pack://siteoforigin:,,,/Resources/efteling_baron1898.png", 25000),
-                new Ride("Goliath", "pack://siteoforigin:,,,/Resources/walibi_goliath.png", 25000),
-                new Ride("Python", "pack://siteoforigin:,,,/Resources/efteling_python.png", 10000, GetStatBoostsForPython()),
-                new Ride("Robin Hood", "pack://siteoforigin:,,,/Resources/walibi_robin_hood.png", 15000),
-                new Ride("Vogel Rok", "pack://siteoforigin:,,,/Resources/efteling_vogelrok.png", 15000),
+                new Ride("Baron 1898", "pack://siteoforigin:,,,/Resources/efteling_baron1898.png", 25000, 5),
+                new Ride("Goliath", "pack://siteoforigin:,,,/Resources/walibi_goliath.png", 25000, 10),
+                new Ride("Python", "pack://siteoforigin:,,,/Resources/efteling_python.png", 10000, 5, GetStatBoostsForPython()),
+                new Ride("Robin Hood", "pack://siteoforigin:,,,/Resources/walibi_robin_hood.png", 15000, 20),
+                new Ride("Vogel Rok", "pack://siteoforigin:,,,/Resources/efteling_vogelrok.png", 15000, 15),
             };
         }
     }
