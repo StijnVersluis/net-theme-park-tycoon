@@ -354,3 +354,11 @@ MigrationBackup/
 
 # Ignore Visual Studio code user files
 .vscode/
+
+# Explicitly ignore obj and bin folders
+ThemeParkTycoonGame.Core/bin
+ThemeParkTycoonGame.Core/obj
+ThemeParkTycoonGame.Fancy/bin
+ThemeParkTycoonGame.Fancy/obj
+ThemeParkTycoonGame.Forms/bin
+ThemeParkTycoonGame.Forms/obj
