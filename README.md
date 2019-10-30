@@ -43,3 +43,7 @@ In this checklist you can read how to get this solution running. Choosing to eit
 If you wish to contribute, check out the [wiki](https://github.com/timothywalter/net-theme-park-tycoon/wiki) in this repository. Please help expand it so new contributors can help understand how this solution works.
 
 
+
+## Attribution
+
+* All icons by [Icons8](https://icons8.com/)
