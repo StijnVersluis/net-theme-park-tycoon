@@ -67,5 +67,5 @@ To contribute:
 
 
 ## Attribution
-
+# Mental support by F.v.G.
 * All icons by [Icons8](https://icons8.com/)
