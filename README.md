@@ -67,7 +67,6 @@ To contribute:
 
 
 ## Attribution
-
-* Idea and initial project by [Timothy Walter Lutt](<https://github.com/timothywalter>)
+# Mental support by F.v.G.
 * All icons by [Icons8](https://icons8.com/)
 
