@@ -79,6 +79,7 @@
             this.generateMoneyButton.TabIndex = 6;
             this.generateMoneyButton.Text = "Generate $1,000";
             this.generateMoneyButton.UseVisualStyleBackColor = true;
+            this.generateMoneyButton.Click += new System.EventHandler(this.generateMoneyButton_Click);
             // 
             // changeWeatherButton
             // 
