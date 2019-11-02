@@ -1,8 +1,8 @@
 # Codename: Theme Park Tycoon Game
 
-*Except it's not really a game, but a simulator of a theme park.*
+*Except it's not really a game, but a simulator for theme parks.*
 
-
+![Resources/logo-small.png](Resources\logo-small.png)
 
 This is a text and menu-based game surrounding the management of a theme park. It allows you to buy rides and shops. Guests will want to go on these rides and buy from your stores. All based on random stats (with the guests) and stat boosts (from rides and consumption).
 
