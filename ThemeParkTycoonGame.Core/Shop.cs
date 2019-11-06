@@ -19,6 +19,12 @@ namespace ThemeParkTycoonGame.Core
                 "{0} looks nice",
                 "I think I'll have lunch at {0}",
             };
+
+            ServesTypes = new ObjectSpecific.Types[]
+            {
+                ObjectSpecific.Types.Food,
+                ObjectSpecific.Types.Drink
+            };
         }
 
         public string GetRandomDesireReason()

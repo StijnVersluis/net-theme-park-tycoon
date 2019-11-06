@@ -27,10 +27,15 @@ namespace ThemeParkTycoonGame.Core
             DesireReasons = new string[]
             {
                 "{0} looks awesome!",
-                "I'm definitily going on {0}!",
-                "{0} looks very cool!",
+                "I'm definitely going on {0}!",
+                "{0} looks very promissing!",
                 "I would love to go on {0}!",
                 "{0}, here I come!",
+            };
+
+            ServesTypes = new ObjectSpecific.Types[]
+            {
+                ObjectSpecific.Types.Exciting
             };
         }
 

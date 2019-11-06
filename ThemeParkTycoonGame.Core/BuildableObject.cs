@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ThemeParkTycoonGame.Core
 {
@@ -10,6 +11,8 @@ namespace ThemeParkTycoonGame.Core
         // Remember that everything inherits from object. Everything is an object.
         public decimal EntryFee;
         public decimal Cost;
+
+        public ObjectSpecific.Types[] ServesTypes { get; protected set; }
 
         public override string ToString()
         {

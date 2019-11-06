@@ -10,10 +10,8 @@ namespace ThemeParkTycoonGame.Core
     {
         private static Marketplace instance;
 
-        private List<Ride> purchasableRides;
-        private List<Ride> purchasedRides;
-        private List<Shop> purchasableShops;
-        private List<Shop> purchasedShops;
+        private List<BuildableObject> purchasableObjects;
+        private List<BuildableObject> purchasedObjects;
 
         // Marketplace is a singleton, this is the way to get an instance
         public static Marketplace Instance
@@ -32,16 +30,12 @@ namespace ThemeParkTycoonGame.Core
         // Marketplace is a singleton. This constructor is therefor private (so only GetInstance can make an instance)
         private Marketplace()
         {
-            // Configure the rides that are available here
-            purchasableRides = Rides.All;
-            purchasedRides = new List<Ride>();
+            purchasableObjects = new List<BuildableObject>();
 
-            // Configure shops that are available here
-            purchasableShops = new List<Shop>()
-            {
+            // Configure the rides and shops that are available here
+            purchasableObjects.AddRange(Rides.All);
 
-            };
-            purchasedShops = new List<Shop>();
+            purchasedObjects = new List<BuildableObject>();
         }
 
         public void Buy(BuildableObject rideOrShop, Wallet fromWallet, ParkInventory toInventory)
@@ -61,15 +55,15 @@ namespace ThemeParkTycoonGame.Core
                 Ride ride = rideOrShop as Ride;
 
                 toInventory.Rides.Add(ride);
-                purchasedRides.Add(ride);
             }
             else if(rideOrShop is Shop)
             {
                 Shop shop = rideOrShop as Shop;
 
                 toInventory.Shops.Add(shop);
-                purchasedShops.Add(shop);
             }
+
+            purchasedObjects.Add(rideOrShop);
 
             // Always deduct the money
             fromWallet.SubtractFromBalance(rideOrShop.Cost, "Bought " + rideOrShop.Name);
@@ -80,17 +74,20 @@ namespace ThemeParkTycoonGame.Core
         {
             List<Ride> buyableRides = new List<Ride>();
 
-            foreach (Ride item in purchasableRides)
+            foreach (BuildableObject item in purchasableObjects)
             {
+                if (!(item is Ride))
+                    continue;
+
                 // If the player already has the item
                 if (currentInventory.Contains(item))
                     continue;
 
                 // If the item has already been purchased
-                if (purchasedRides.Contains(item))
+                if (purchasedObjects.Contains(item))
                     continue;
 
-                buyableRides.Add(item);
+                buyableRides.Add(item as Ride);
             }
 
             return buyableRides;
@@ -101,20 +98,45 @@ namespace ThemeParkTycoonGame.Core
         {
             List<Shop> buyableShops = new List<Shop>();
 
-            foreach (Shop item in purchasableShops)
+            foreach (BuildableObject item in purchasableObjects)
             {
+                if (!(item is Shop))
+                    continue;
+
                 // If the player already has the item
                 if (currentInventory.Contains(item))
                     continue;
 
                 // If the item has already been purchased
-                if (purchasedShops.Contains(item))
+                if (purchasedObjects.Contains(item))
                     continue;
 
-                buyableShops.Add(item);
+                buyableShops.Add(item as Shop);
             }
 
             return buyableShops;
+        }
+
+        // Returns all rides and shops by what they serve
+        public List<BuildableObject> GetBuyableObjects(ObjectSpecific.Types objectSpecificType)
+        {
+            var objects = new List<BuildableObject>();
+
+            foreach (var rideOrShop in purchasableObjects)
+            {
+                if (rideOrShop.ServesTypes.Contains(objectSpecificType))
+                    objects.Add(rideOrShop);
+            }
+
+            return objects;
+        }
+
+        // Returns a single random rides and shops by what they serve
+        public BuildableObject GetRandomBuyableObject(ObjectSpecific.Types objectSpecificType)
+        {
+            var objects = GetBuyableObjects(objectSpecificType);
+
+            return objects[NumberGenerator.Next(objects.Count)];
         }
     }
 }

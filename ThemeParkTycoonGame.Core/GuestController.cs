@@ -101,55 +101,127 @@ namespace ThemeParkTycoonGame.Core
             // Try a few times if the guest doesn't want any desires
             while(cycles++ < MAX_DECISION_CYCLES)
             {
-                bool foundDesire = false;
+                Desire foundDesire = giveDesireByAvailability(guest);
 
-                // Go through all rides
-                foreach (var desire in Desirables)
-                {
-                    // Do not desire things if we already desire them
-                    if (guest.Desires.Contains(desire))
-                        continue;
-
-                    // Apply stat modifiers to chance for this desire 
-                    // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
-                    // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
-
-                    if (desire.Object is Ride)
-                    {
-                        if (guest.GetStat("want_for_ride").Value < 50)
-                        {
-                            // We do not want this enough. Continue to next desire
-                            continue;
-                        }
-                    }
-                    else if (desire.Object is Shop)
-                    {
-                        if (desire.Specific.Category == ObjectSpecific.Types.Food
-                            && guest.GetStat("hunger").Value < 50)
-                        {
-                            // We do not want this enough. Continue to next desire. etc...
-                            continue;
-                        }else if (desire.Specific.Category == ObjectSpecific.Types.Drink
-                            && guest.GetStat("thirst").Value < 50)
-                        {
-                            continue;
-                        }
-                    }
-
-                    // TODO See if chance makes us like them (stats will make things more/less likely)
-                    desire.Reason = string.Format(desire.Object.GetRandomDesireReason(), desire.Object);
-                    guest.Desires.Enqueue(desire);
-
-                    // We will stop when we desire something. This is to prevent the guest from
-                    // getting infinite desires right away. Their desires are added to when empty.
-                    foundDesire = true; 
-
+                if (foundDesire != null)
                     break;
+
+                // If we didn't get desires by availability, we will want something based on our stats.
+                foundDesire = giveDesireByStats(guest);
+
+                if (foundDesire != null)
+                    break;
+
+                // TODO: Leave park
+            }
+        }
+
+        private Desire giveDesireByStats(Guest guest)
+        {
+            // Go through all stats and decide wether we have cravings.
+            float cravings = 40;
+            IDesirable desirable = null;
+            ObjectSpecific objectSpecific = null;
+
+            foreach (var stat in guest.CurrentStats)
+            {
+                // If we aren't craving this stat, continue to the next stat.
+                if (stat.Value < cravings)
+                    continue;
+
+                switch (stat.Type.UniqueId)
+                {
+                    case "hunger":
+                        {
+                            desirable = (IDesirable)Marketplace.Instance.GetRandomBuyableObject(ObjectSpecific.Types.Food);
+                            //objectSpecific =
+                            break;
+                        }
+                    case "thirst":
+                        {
+                            desirable = (IDesirable)Marketplace.Instance.GetRandomBuyableObject(ObjectSpecific.Types.Drink);
+                            //objectSpecific =
+                            break;
+                        }
+                    case "excitement":
+                        {
+                            desirable = (IDesirable)Marketplace.Instance.GetRandomBuyableObject(ObjectSpecific.Types.Exciting);
+                            //objectSpecific =
+                            break;
+                        }
                 }
 
-                if (foundDesire)
-                    break;
+                //if (desirable == null)
+                    //throw new NotImplementedException("Add implementation for this desire!");
+
+                // If we've come here we have a desirable. We only want 1 thing.
+                break;
             }
+
+            if (desirable == null)
+                return null;
+
+            // If we desire something out of our stats, enqueue it on our desire list
+            Desire desire = new Desire()
+            {
+                Object = desirable,
+                Specific = objectSpecific
+            };
+
+            // Show that this ride/shop doesn't exist yet = (Unavailable)
+            // TODO: Change this to say something like "I would love to go on something more exciting than X"
+            desire.Reason = string.Format("(Unavailable) " + desire.Object.GetRandomDesireReason(), desire.Object);
+
+            guest.Desires.Enqueue(desire);
+
+            return desire;
+        }
+
+        private Desire giveDesireByAvailability(Guest guest)
+        {
+            // Go through all desirable things (shops, rides) and see if we want them enough.
+            float enough = 25;
+            foreach (var desire in Desirables)
+            {
+                // Do not desire things if we already desire them
+                if (guest.Desires.Contains(desire))
+                    continue;
+
+                // Apply stat modifiers to chance for this desire 
+                // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
+                // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
+
+                if (desire.Object is Ride)
+                {
+                    if (guest.GetStat("want_for_ride").Value < enough)
+                    {
+                        // We do not want this enough. Continue to next desire
+                        continue;
+                    }
+                }
+                else if (desire.Object is Shop)
+                {
+                    if (desire.Specific.Category == ObjectSpecific.Types.Food
+                        && guest.GetStat("hunger").Value < enough)
+                    {
+                        // We do not want this enough. Continue to next desire. etc...
+                        continue;
+                    }
+                    else if (desire.Specific.Category == ObjectSpecific.Types.Drink
+                       && guest.GetStat("thirst").Value < enough)
+                    {
+                        continue;
+                    }
+                }
+
+                // TODO See if chance makes us like them (stats will make things more/less likely)
+                desire.Reason = string.Format(desire.Object.GetRandomDesireReason(), desire.Object);
+                guest.Desires.Enqueue(desire);
+
+                return desire;
+            }
+
+            return null;
         }
 
         private bool shouldGuestEnter()

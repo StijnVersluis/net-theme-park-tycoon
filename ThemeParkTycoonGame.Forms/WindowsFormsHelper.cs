@@ -36,7 +36,7 @@ namespace ThemeParkTycoonGame.Forms
         {
             new StatBoost()
             {
-                StatType = StatTypes.GetByUniqueId("enthousiasm"),
+                StatType = StatTypes.GetByUniqueId("excitement"),
                 Multiplier = 2f, // Going on Python makes you twice as excited as you were
                 Duration = 5,
             },
