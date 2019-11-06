@@ -106,14 +106,43 @@ namespace ThemeParkTycoonGame.Core
                 // Go through all rides
                 foreach (var desire in Desirables)
                 {
+                    // Do not desire things if we already desire them
+                    if (guest.Desires.Contains(desire))
+                        continue;
+
                     // Apply stat modifiers to chance for this desire 
                     // Hunger > 50   =   +desire to eat     +a bit desire to ride intense rides
                     // Nauseous > 50 =   -desire to ride intense rides  +desire for bathroom
 
+                    if (desire.Object is Ride)
+                    {
+                        if (guest.GetStat("want_for_ride").Value < 50)
+                        {
+                            // We do not want this enough. Continue to next desire
+                            continue;
+                        }
+                    }
+                    else if (desire.Object is Shop)
+                    {
+                        if (desire.Specific.Category == ObjectSpecific.Types.Food
+                            && guest.GetStat("hunger").Value < 50)
+                        {
+                            // We do not want this enough. Continue to next desire. etc...
+                            continue;
+                        }else if (desire.Specific.Category == ObjectSpecific.Types.Drink
+                            && guest.GetStat("thirst").Value < 50)
+                        {
+                            continue;
+                        }
+                    }
+
                     // TODO See if chance makes us like them (stats will make things more/less likely)
                     desire.Reason = string.Format(desire.Object.GetRandomDesireReason(), desire.Object);
                     guest.Desires.Enqueue(desire);
-                    foundDesire = true;
+
+                    // We will stop when we desire something. This is to prevent the guest from
+                    // getting infinite desires right away. Their desires are added to when empty.
+                    foundDesire = true; 
 
                     break;
                 }

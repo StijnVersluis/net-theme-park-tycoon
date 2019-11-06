@@ -39,9 +39,15 @@ namespace ThemeParkTycoonGame.Forms
                 StatType = StatTypes.GetByUniqueId("enthousiasm"),
                 Multiplier = 2f, // Going on Python makes you twice as excited as you were
                 Duration = 5,
+            },
+            new StatBoost()
+            {
+                StatType = StatTypes.GetByUniqueId("want_for_ride"),
+                Multiplier = -2f, // Going on Python makes you not want to go on a ride again
+                Duration = 50,
             }
         };
-
+        
         private static void CreateRides()
         {
             var baron = new Ride("Baron 1898", Properties.Resources.efteling_baron1898, 25000, 5);

@@ -51,6 +51,17 @@ namespace ThemeParkTycoonGame.Core
             RefreshDesires();
         }
 
+        public Stat GetStat(string uniqueId)
+        {
+            foreach (Stat stat in CurrentStats)
+            {
+                if (stat.Type.UniqueId == uniqueId)
+                    return stat;
+            }
+
+            return null;
+        }
+
         public void FollowDesire()
         {
             // If we have no desires, stop this method and go back
