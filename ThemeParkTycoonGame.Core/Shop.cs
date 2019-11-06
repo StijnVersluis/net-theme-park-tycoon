@@ -27,7 +27,7 @@ namespace ThemeParkTycoonGame.Core
             };
         }
 
-        public string GetRandomDesireReason()
+        string IDesirable.GetRandomDesireReason()
         {
             int amountDesireReasons = DesireReasons.Length;
 
@@ -36,6 +36,11 @@ namespace ThemeParkTycoonGame.Core
 
             var randomIndex = NumberGenerator.Next(amountDesireReasons);
             return DesireReasons[randomIndex];
+        }
+
+        bool IDesirable.IsAvailable()
+        {
+            return this.ParentInventory != null && this.ParentInventory.Contains(this);
         }
     }
 }

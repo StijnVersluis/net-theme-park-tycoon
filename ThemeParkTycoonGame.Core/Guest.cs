@@ -68,9 +68,26 @@ namespace ThemeParkTycoonGame.Core
             if (Desires.Count == 0)
                 return;
 
-            //Desire desireToFollow = Desires.Dequeue();
+            Desire desireToFollow = Desires.Peek();
 
-            // Do something with the object (like become damaged, or use products in stock)
+            // Can't follow desire, because the park doesn't have it.
+            // TODO: Lower excitement
+            if (!desireToFollow.Object.IsAvailable())
+                return;
+
+            // Actually take the desire from the list
+            desireToFollow = Desires.Dequeue();
+
+            if(desireToFollow.Object is BuildableObject)
+            {
+                var buildableObject = desireToFollow.Object as BuildableObject;
+
+                buildableObject.Consume(this);
+
+                this.Wallet.SubtractFromBalance(buildableObject.EntryFee, "(Fulfilled) " + desireToFollow.Reason);
+            }
+
+            // TODO: Do something with the object (like become damaged, or use products in stock)
             //desireToFollow.Object.
 
             // TODO: Apply the rides' boost after riding the ride

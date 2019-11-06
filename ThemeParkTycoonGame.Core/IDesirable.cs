@@ -3,5 +3,6 @@
     public interface IDesirable
     {
         string GetRandomDesireReason();
+        bool IsAvailable();
     }
 }

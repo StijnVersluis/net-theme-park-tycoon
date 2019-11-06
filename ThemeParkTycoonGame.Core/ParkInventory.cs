@@ -40,6 +40,18 @@ namespace ThemeParkTycoonGame.Core
             Rides.CollectionChanged += Object_CollectionChanged;
         }
 
+        internal void Add(BuildableObject buildableObject)
+        {
+            buildableObject.ParentInventory = this;
+
+            if (buildableObject is Shop)
+                Shops.Add(buildableObject as Shop);
+            else if (buildableObject is Ride)
+                Rides.Add(buildableObject as Ride);
+            else
+                throw new ArgumentException("Tried to add something other than shop or ride to inventory!");
+        }
+
         public BuildableObject GetByName(string itemName)
         {
             foreach (Shop item in Shops)

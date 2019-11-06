@@ -51,7 +51,7 @@ namespace ThemeParkTycoonGame.Core
                 StatisticBoosts = statBoosts;
         }
 
-        public string GetRandomDesireReason()
+        string IDesirable.GetRandomDesireReason()
         {
             int amountDesireReasons = DesireReasons.Length;
 
@@ -62,5 +62,9 @@ namespace ThemeParkTycoonGame.Core
             return DesireReasons[randomIndex];
         }
 
+        bool IDesirable.IsAvailable()
+        {
+            return this.ParentInventory != null && this.ParentInventory.Contains(this);
+        }
     }
 }

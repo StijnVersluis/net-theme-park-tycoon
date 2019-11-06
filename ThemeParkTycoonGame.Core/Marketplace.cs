@@ -50,18 +50,7 @@ namespace ThemeParkTycoonGame.Core
                 throw new ArgumentException("Inventory already contains this item! Check if player owns the item before calling this method.");
             }
 
-            if(rideOrShop is Ride)
-            {
-                Ride ride = rideOrShop as Ride;
-
-                toInventory.Rides.Add(ride);
-            }
-            else if(rideOrShop is Shop)
-            {
-                Shop shop = rideOrShop as Shop;
-
-                toInventory.Shops.Add(shop);
-            }
+            rideOrShop.AddToInventory(toInventory);
 
             purchasedObjects.Add(rideOrShop);
 

@@ -85,6 +85,8 @@ namespace ThemeParkTycoonGame.Core
 
             foreach (BuildableObject rideOrShop in ParkInventory.All)
             {
+                rideOrShop.ParentWallet = ParkWallet; // TODO: This is getting chaotic, re-think structure!!!
+
                 if (!(rideOrShop is Shop) && !(rideOrShop is Ride))
                 {
                     throw new ArgumentException("Not a ride or shop from inventory. Can't desire");
