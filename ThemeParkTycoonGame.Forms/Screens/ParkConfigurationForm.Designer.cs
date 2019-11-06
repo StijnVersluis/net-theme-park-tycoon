@@ -35,13 +35,13 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.entryFeeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.balanceTextBox = new System.Windows.Forms.TextBox();
-            this.currentBalanceLabel = new System.Windows.Forms.Label();
+            this.inventoryLabel = new System.Windows.Forms.Label();
             this.objectsListView = new System.Windows.Forms.ListView();
             this.nameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.walletBalanceColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeEnteredColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.inventoryLabel = new System.Windows.Forms.Label();
+            this.balanceTextBox = new System.Windows.Forms.TextBox();
+            this.currentBalanceLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.entryFeeNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -94,23 +94,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Your Stuff:";
             // 
-            // balanceTextBox
+            // inventoryLabel
             // 
-            this.balanceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.balanceTextBox.Enabled = false;
-            this.balanceTextBox.Location = new System.Drawing.Point(106, 18);
-            this.balanceTextBox.Name = "balanceTextBox";
-            this.balanceTextBox.Size = new System.Drawing.Size(236, 20);
-            this.balanceTextBox.TabIndex = 5;
-            // 
-            // currentBalanceLabel
-            // 
-            this.currentBalanceLabel.AutoSize = true;
-            this.currentBalanceLabel.Location = new System.Drawing.Point(5, 21);
-            this.currentBalanceLabel.Name = "currentBalanceLabel";
-            this.currentBalanceLabel.Size = new System.Drawing.Size(98, 13);
-            this.currentBalanceLabel.TabIndex = 5;
-            this.currentBalanceLabel.Text = "Current Balance:  $";
+            this.inventoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inventoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryLabel.Location = new System.Drawing.Point(8, 53);
+            this.inventoryLabel.Name = "inventoryLabel";
+            this.inventoryLabel.Size = new System.Drawing.Size(334, 13);
+            this.inventoryLabel.TabIndex = 7;
+            this.inventoryLabel.Text = "Your Rides and Shops";
+            this.inventoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // objectsListView
             // 
@@ -132,6 +126,7 @@
             this.objectsListView.Size = new System.Drawing.Size(334, 229);
             this.objectsListView.TabIndex = 6;
             this.objectsListView.UseCompatibleStateImageBehavior = false;
+            this.objectsListView.ItemActivate += new System.EventHandler(this.objectsListView_ItemActivate);
             // 
             // nameColumnHeader
             // 
@@ -147,17 +142,23 @@
             this.timeEnteredColumnHeader.Text = "Time Entered";
             this.timeEnteredColumnHeader.Width = 127;
             // 
-            // inventoryLabel
+            // balanceTextBox
             // 
-            this.inventoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inventoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventoryLabel.Location = new System.Drawing.Point(8, 53);
-            this.inventoryLabel.Name = "inventoryLabel";
-            this.inventoryLabel.Size = new System.Drawing.Size(334, 13);
-            this.inventoryLabel.TabIndex = 7;
-            this.inventoryLabel.Text = "Your Rides and Shops";
-            this.inventoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.balanceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.balanceTextBox.Enabled = false;
+            this.balanceTextBox.Location = new System.Drawing.Point(106, 18);
+            this.balanceTextBox.Name = "balanceTextBox";
+            this.balanceTextBox.Size = new System.Drawing.Size(236, 20);
+            this.balanceTextBox.TabIndex = 5;
+            // 
+            // currentBalanceLabel
+            // 
+            this.currentBalanceLabel.AutoSize = true;
+            this.currentBalanceLabel.Location = new System.Drawing.Point(5, 21);
+            this.currentBalanceLabel.Name = "currentBalanceLabel";
+            this.currentBalanceLabel.Size = new System.Drawing.Size(98, 13);
+            this.currentBalanceLabel.TabIndex = 5;
+            this.currentBalanceLabel.Text = "Current Balance:  $";
             // 
             // ParkConfigurationForm
             // 

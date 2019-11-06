@@ -91,5 +91,16 @@ namespace ThemeParkTycoonGame.Forms.Screens
         {
             throw new NotImplementedException();
         }
+
+        private void objectsListView_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem selectedObjectItem = objectsListView.SelectedItems[0];
+
+            // Cast the Tag (object) back to Ride (we know there's a Ride in there)
+            // TODO: Support shops as well
+            Ride ride = selectedObjectItem.Tag as Ride;
+
+            // Open ride window to allow changing entry fee, name and see riders/waiting time.
+        }
     }
 }
