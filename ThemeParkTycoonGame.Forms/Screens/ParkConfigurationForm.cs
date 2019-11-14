@@ -32,8 +32,6 @@ namespace ThemeParkTycoonGame.Forms.Screens
         {
             List<BuildableObject> objects = parkInventory.All;
 
-            objectsListView.Clear();
-
             objectsListView.LargeImageList = new ImageList();
             objectsListView.LargeImageList.ImageSize = new Size(64, 64);
 
