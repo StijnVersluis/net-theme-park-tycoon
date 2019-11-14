@@ -34,6 +34,7 @@ namespace ThemeParkTycoonGame.Forms.Screens
 
             objectsListView.LargeImageList = new ImageList();
             objectsListView.LargeImageList.ImageSize = new Size(64, 64);
+            objectsListView.Items.Clear();
 
             for (int i = 0; i < objects.Count; i++)
             {
