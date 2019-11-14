@@ -47,6 +47,17 @@
 
                     <controls:GuestsView x:Name="guestsControl"/>
                 </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://siteoforigin:,,,/Resources/food_48.png"
+                                   Height="16"/>
+                            <TextBlock Text="shops" Foreground="Blue" />
+                        </StackPanel>
+                    </TabItem.Header>
+
+                </TabItem>
             </TabControl>
         </Grid>
     </Grid>
