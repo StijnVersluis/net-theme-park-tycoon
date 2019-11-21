@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ThemeParkTycoonGame.Fancy.Windows"
         xmlns:controls="clr-namespace:ThemeParkTycoonGame.Fancy.Controls"
         mc:Ignorable="d"
-        Title="{Binding Path=Name}" Height="450" Width="800" WindowStyle="None">
+        Title="{Binding Path=Name}" Height="501.2" Width="800" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,19 +23,20 @@
                     x:Name="closeButton"/>
         </StackPanel>
         <Grid Grid.Row="1">
-            <TabControl>
+            <TabControl SelectionChanged="TabControl_SelectionChanged">
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="pack://siteoforigin:,,,/Resources/roller_coaster_48.png"
                                    Height="16"/>
                             <TextBlock Text="Park" Foreground="Blue" />
+                            
                         </StackPanel>
                     </TabItem.Header>
-                    
-                    <controls:ParkDetailsView x:Name="parkControl"/>
-                </TabItem>
 
+                    <controls:ParkDetailsView x:Name="parkControl" Loaded="parkControl_Loaded"/>
+                </TabItem>
+            
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -57,6 +58,35 @@
                         </StackPanel>
                     </TabItem.Header>
 
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://siteoforigin:,,,/Resources/icon.png"
+                                   Height="16"/>
+                            <TextBlock Text="Park" Foreground="Blue" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Park naam:</Label>
+                            <TextBox Width="300px"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Entry fee:</Label>
+                            <TextBox HorizontalAlignment="Right" Width="300px"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Current balance:</Label>
+                            <Label>$200000</Label>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center">
+                            <Label>Jouw attracties en winkels</Label>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center">
+                            <ListBox Width="300px" Height="300px"></ListBox>
+                        </StackPanel>
+                    </StackPanel>
                 </TabItem>
             </TabControl>
         </Grid>

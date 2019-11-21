@@ -80,5 +80,16 @@ namespace ThemeParkTycoonGame.Fancy.Windows
         {
             this.Close();
         }
+
+        private void parkControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }
