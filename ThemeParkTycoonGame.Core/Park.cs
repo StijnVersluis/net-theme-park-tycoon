@@ -20,7 +20,12 @@ namespace ThemeParkTycoonGame.Core
         public GuestList Guests;
         public Wallet ParkWallet;
         public ParkInventory ParkInventory;
-        public decimal EntryFee;
+        
+        public decimal EntryFee
+         {
+            get;
+            set;
+         }
 
         public GuestController GuestController;
 

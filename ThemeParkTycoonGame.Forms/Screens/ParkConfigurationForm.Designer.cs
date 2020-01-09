@@ -1,4 +1,4 @@
-﻿namespace ThemeParkTycoonGame.Forms.Screens
+namespace ThemeParkTycoonGame.Forms.Screens
 {
     partial class ParkConfigurationForm
     {
@@ -120,6 +120,7 @@
             listViewGroup1.Name = "coasterListViewGroup";
             this.objectsListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1});
+            this.objectsListView.HideSelection = false;
             this.objectsListView.Location = new System.Drawing.Point(8, 69);
             this.objectsListView.MultiSelect = false;
             this.objectsListView.Name = "objectsListView";
@@ -150,6 +151,7 @@
             this.balanceTextBox.Name = "balanceTextBox";
             this.balanceTextBox.Size = new System.Drawing.Size(236, 20);
             this.balanceTextBox.TabIndex = 5;
+            this.balanceTextBox.TextChanged += new System.EventHandler(this.balanceTextBox_TextChanged);
             // 
             // currentBalanceLabel
             // 

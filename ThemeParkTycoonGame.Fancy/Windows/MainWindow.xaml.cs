@@ -25,6 +25,10 @@ namespace ThemeParkTycoonGame.Fancy.Windows
         private DispatcherTimer tickTimer;
         private Park park;
 
+       private void refreshBalance()
+        {
+            balanceLabel.Content = "Balance: " + park.ParkWallet.Balance.ToString();
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -43,18 +47,23 @@ namespace ThemeParkTycoonGame.Fancy.Windows
             // Give the park information to the ParkControl
             parkControl.Park = this.park;
 
+ 
+
+            //decimal Balance = this.park.ParkWallet.Balance;
+
             // Give the guest information to the Guest Control
             guestsControl.Guests = this.park.Guests;
 
             // This allows us to bind to every property in a park (like EntryFee, Name, Guests, etc)
             this.DataContext = this.park;
-
+            
             // Don't need this because of binding:
             // Hook to the park namechange to update the titlebar
             //park.NameChanging += Park_NameChanging;
 
             // Change the park name to be something fun for the user
             park.Name = "Loopy Landscapes";
+            park.ParkWallet.Balance.ToString();
 
             // Make sure this window can be dragged
             this.MouseDown += MainWindow_MouseDown;
@@ -73,7 +82,10 @@ namespace ThemeParkTycoonGame.Fancy.Windows
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -83,7 +95,7 @@ namespace ThemeParkTycoonGame.Fancy.Windows
 
         private void parkControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            refreshBalance();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,5 +103,15 @@ namespace ThemeParkTycoonGame.Fancy.Windows
 
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+             
+
+        }
+       
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
